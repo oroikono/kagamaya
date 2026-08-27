@@ -1,0 +1,153 @@
+% ==========================================================================
+% FIGURE 1 — EDITABLE SELLING-PITCH FIGURE (v10 spacious/icon-led revision)
+% Native TikZ at final manuscript size: no resizebox and no rasterized text.
+% The robot and lock PDFs are vendored MIT-licensed Tabler assets. View,
+% verdict, and agreement icons are native TikZ so every semantic layer remains
+% editable in Overleaf. Protected gutters keep every arrow outside the cards.
+% ==========================================================================
+\providecommand{\FigOneRobotIcon}{figures/icons/tabler/robot-page-4004.pdf}
+\providecommand{\FigOneLockIcon}{figures/icons/tabler/lock-page-3032.pdf}
+
+\begin{tikzpicture}[x=1cm,y=1cm,font=\sffamily\footnotesize,>=Latex]
+  \useasboundingbox (0,0) rectangle (13.75,4.48);
+
+  \definecolor{cbblue}{HTML}{0072B2}
+  \definecolor{cborange}{HTML}{E69F00}
+  \definecolor{cbvermillion}{HTML}{D55E00}
+  \definecolor{cbgreen}{HTML}{187A56}
+  \definecolor{cbcharcoal}{HTML}{273142}
+
+  \tikzset{
+    panel/.style={rounded corners=4pt,draw=cbcharcoal!22,line width=.55pt,fill=white},
+    flow/.style={-{Latex[length=1.55mm]},line width=.86pt,draw=cbcharcoal,
+                shorten <=2.3pt,shorten >=2.3pt},
+    ghost/.style={-{Latex[length=1.55mm]},line width=.76pt,draw=cbcharcoal!55,dashed,
+                 shorten <=2.3pt,shorten >=2.3pt},
+    body/.style={font=\sffamily\fontsize{6.9}{7.7}\selectfont},
+    micro/.style={font=\sffamily\fontsize{6.7}{7.4}\selectfont},
+  }
+
+  % A. Same episode, two predeclared views, one unchanged verifier.
+  \node[panel,minimum width=13.75cm,minimum height=2.77cm,anchor=south west] at (0,1.70) {};
+  \fill[cbblue!7,rounded corners=4pt] (.02,4.08) rectangle (13.73,4.45);
+  \node[anchor=west,font=\sffamily\bfseries\fontsize{8.4}{9.2}\selectfont,
+        text=cbblue!82!black] at (.20,4.265)
+    {A \quad ONE SELECTED VIEW CAN FLIP THE VERDICT};
+
+  % Selector: generous optical padding around icon and copy.
+  \node[rounded corners=4pt,draw=cbblue!45,line width=.7pt,fill=cbblue!6,
+        minimum width=1.58cm,minimum height=1.76cm] (agentcard) at (1.00,2.86) {};
+  \node at (1.00,3.39) {\includegraphics[height=.39cm]{\FigOneRobotIcon}};
+  \node[align=center,font=\sffamily\bfseries\fontsize{7.0}{7.7}\selectfont,
+        text=cbcharcoal] at (1.00,2.96) {agent};
+  \node[align=center,body,text=cbcharcoal!72] at (1.00,2.48) {chooses\\a view};
+  \coordinate (viewfork) at (2.08,2.86);
+  \draw[draw=cbblue,line width=.86pt,shorten <=2.3pt] (agentcard.east)--(viewfork);
+
+  % Coarse view. The lens marks a selectable numerical representation.
+  \node[rounded corners=3pt,draw=cborange,line width=1.0pt,fill=cborange!7,
+        minimum width=3.42cm,minimum height=.96cm] (coarse) at (3.99,3.43) {};
+  \draw[flow,draw=cbblue] (viewfork) |- (coarse.west);
+  \draw[cborange,line width=.72pt] (2.56,3.55) circle (.15cm);
+  \draw[cborange,line width=.72pt] (2.67,3.44)--(2.79,3.32);
+  \node[anchor=west,font=\sffamily\bfseries\fontsize{7.0}{7.7}\selectfont,
+        text=cbcharcoal] at (2.84,3.55) {coarse};
+  \node[rounded corners=2pt,draw=cborange!65,fill=cborange!16,text=cborange!38!black,
+        font=\sffamily\bfseries\fontsize{6.5}{7.1}\selectfont,
+        inner xsep=2.6pt,inner ysep=1.2pt,anchor=east] at (5.54,3.56) {highest score};
+  \node[anchor=center,micro,text=cbcharcoal!74] at (3.99,3.14)
+    {7 samples \;\textbullet\; 5 test functions};
+
+  % Denser comparison.
+  \node[rounded corners=3pt,draw=cbcharcoal!35,dashed,line width=.75pt,fill=white,
+        minimum width=3.42cm,minimum height=.96cm] (dense) at (3.99,2.27) {};
+  \draw[ghost] (viewfork) |- (dense.west);
+  \draw[cbcharcoal!55,line width=.72pt] (2.56,2.39) circle (.15cm);
+  \draw[cbcharcoal!55,line width=.72pt] (2.67,2.28)--(2.79,2.16);
+  \node[anchor=west,font=\sffamily\bfseries\fontsize{7.0}{7.7}\selectfont,
+        text=cbcharcoal] at (2.84,2.39) {denser};
+  \node[rounded corners=2pt,fill=cbcharcoal!9,text=cbcharcoal!76,
+        font=\sffamily\bfseries\fontsize{6.5}{7.1}\selectfont,
+        inner xsep=2.6pt,inner ysep=1.2pt,anchor=east] at (5.54,2.40) {lower score};
+  \node[anchor=center,micro,text=cbcharcoal!72] at (3.99,1.98)
+    {25 samples \;\textbullet\; 2 test functions};
+
+  % Immutable verifier.
+  \node[rounded corners=4pt,draw=cbcharcoal,line width=.85pt,fill=cbcharcoal!5,
+        minimum width=1.86cm,minimum height=1.76cm,align=center]
+    (verifier) at (7.04,2.86) {};
+  \draw[flow,draw=cborange] (coarse.east)--([yshift=5.8mm]verifier.west);
+  \draw[ghost] (dense.east)--([yshift=-5.8mm]verifier.west);
+  \node at (7.04,3.39) {\includegraphics[height=.36cm]{\FigOneLockIcon}};
+  \node[font=\sffamily\bfseries\fontsize{7.0}{7.7}\selectfont,
+        text=cbcharcoal,align=center] at (7.04,2.93) {same fixed\\verifier};
+  \node[text=cbcharcoal!70,body] at (7.04,2.39) {rules locked};
+
+  % Opposite terminals, with redundant verdict icons.
+  \node[rounded corners=3pt,draw=cbvermillion,line width=.95pt,fill=cbvermillion!7,
+        minimum width=3.36cm,minimum height=.96cm,inner xsep=7pt,inner ysep=4pt]
+    (falseout) at (11.22,3.43) {};
+  \draw[cbvermillion,line width=.8pt,rounded corners=.4pt]
+    (9.80,3.30)--(9.95,3.58)--(10.10,3.30)--cycle;
+  \node[font=\sffamily\bfseries\fontsize{7.0}{7.7}\selectfont,
+        anchor=west,text=cbcharcoal] at (10.22,3.55) {LIBRARY REJECTED};
+  \node[anchor=west,body,text=cbvermillion!85!black] at (10.22,3.22)
+    {wrong: true terms exist};
+
+  \node[rounded corners=3pt,draw=cbcharcoal!38,dashed,line width=.75pt,fill=white,
+        minimum width=3.36cm,minimum height=.96cm,inner xsep=7pt,inner ysep=4pt]
+    (trueout) at (11.22,2.27) {};
+  \draw[cbgreen,line width=.82pt] (9.81,2.27) circle (.15cm);
+  \draw[cbgreen,line width=.82pt] (9.72,2.27)--(9.79,2.19)--(9.92,2.35);
+  \node[font=\sffamily\bfseries\fontsize{7.0}{7.7}\selectfont,
+        anchor=west,text=cbcharcoal] at (10.22,2.39) {TERMS RECOVERED};
+  \node[anchor=west,body,text=cbcharcoal!72] at (10.22,2.06) {correct for this case};
+  \draw[flow,draw=cbvermillion] ([yshift=5.8mm]verifier.east)--(falseout.west);
+  \draw[ghost] ([yshift=-5.8mm]verifier.east)--(trueout.west);
+
+  % B. Four related views feed a fixed, proposal-blind demotion rule.
+  \node[panel,minimum width=13.75cm,minimum height=1.60cm,anchor=south west] at (0,.04) {};
+  \fill[cborange!10,rounded corners=4pt] (.02,1.29) rectangle (13.73,1.63);
+  \node[anchor=west,font=\sffamily\bfseries\fontsize{8.2}{9}\selectfont,
+        text=cborange!55!black] at (.20,1.46)
+    {B \quad COMPARE RELATED VIEWS BEFORE ACCEPTING A CLAIM};
+
+  \node[rounded corners=4pt,draw=cbcharcoal!30,dashed,fill=cbcharcoal!2,
+        minimum width=4.18cm,minimum height=.84cm] (viewset) at (2.37,.68) {};
+  \node[anchor=west,font=\sffamily\bfseries\fontsize{6.8}{7.5}\selectfont,
+        text=cbcharcoal!68] at (.50,.93) {4 RELATED VIEWS};
+  \foreach \x/\lab in {1.02/2,1.88/3,2.74/4,3.60/5}{
+    \draw[cbblue!70,line width=.62pt] (\x,.55) circle (.145cm);
+    \draw[cbblue!70,line width=.62pt] (\x+.10,.45)--(\x+.21,.34);
+    \node[font=\sffamily\bfseries\fontsize{6.3}{6.9}\selectfont,
+          text=cbcharcoal!68] at (\x,.55) {\lab};
+  }
+
+  \node[rounded corners=4pt,draw=cbcharcoal,line width=.8pt,fill=cbcharcoal!6,
+        minimum width=1.78cm,minimum height=.82cm,align=center] (guard) at (6.32,.68) {};
+  \node at (5.82,.68) {\includegraphics[height=.28cm]{\FigOneLockIcon}};
+  \node[anchor=center,font=\sffamily\bfseries\fontsize{6.8}{7.5}\selectfont,
+        text=cbcharcoal] at (6.45,.78) {agree?};
+  \node[anchor=center,micro,text=cbcharcoal!68] at (6.45,.49) {fixed rule};
+  \draw[flow] (viewset.east)--(guard.west);
+
+  \coordinate (outfork) at (7.75,.68);
+  \draw[draw=cbcharcoal,line width=.82pt,shorten <=2.3pt] (guard.east)--(outfork);
+  \node[rounded corners=3pt,draw=cbgreen!65,fill=cbgreen!5,
+        minimum width=4.78cm,minimum height=.40cm,align=center,
+        inner xsep=7pt,inner ysep=2pt] (preserve) at (10.93,1.02)
+    {\sffamily\bfseries\fontsize{6.9}{7.6}\selectfont\color{cbgreen!70!black}
+     AGREE \;\textbullet\; retain shared conclusion};
+  \draw[cbgreen,line width=.82pt] (8.72,1.02) circle (.12cm);
+  \draw[cbgreen,line width=.82pt] (8.65,1.02)--(8.70,.96)--(8.80,1.08);
+  \node[rounded corners=3pt,draw=cborange,line width=.9pt,fill=cborange!10,
+        minimum width=4.78cm,minimum height=.52cm,align=center,
+        inner xsep=7pt,inner ysep=2pt] (demote) at (10.93,.46)
+    {\sffamily\bfseries\fontsize{6.9}{7.6}\selectfont\color{cborange!43!black}
+     DISAGREE \;\textbullet\; WITHHOLD CLAIM\\[.6pt]
+     \sffamily\fontsize{6.7}{7.4}\selectfont\color{cbcharcoal!72}request another view};
+  \draw[cborange!75!black,line width=.85pt] (8.68,.35)--(8.68,.57);
+  \draw[cborange!75!black,line width=.85pt] (8.78,.35)--(8.78,.57);
+  \draw[ghost] (outfork) |- (preserve.west);
+  \draw[flow,draw=cborange] (outfork) |- (demote.west);
+\end{tikzpicture}

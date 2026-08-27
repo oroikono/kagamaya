@@ -1,0 +1,62 @@
+# Evidence-View Gaming in Agentic Equation Discovery
+
+Private, hash-bound release repository for the NeurIPS 2026 Sim2Science workshop manuscript:
+**“The Verifier Is Part of the Simulator: Evidence-View Gaming in Agentic Equation Discovery.”**
+
+This repository contains the exact v19 manuscript source, the executable experiment code retained for
+the paper, the raw machine-readable evidence needed for the primary results, and a standard-library
+reproduction script that independently recomputes the load-bearing findings.
+
+## One-command reproduction
+
+```bash
+python3 scripts/reproduce_findings.py
+```
+
+Expected result: `33/33` checks pass. The machine-readable output is written to
+`output/reproduction/code_crosscheck.json`. This command makes no network or model-provider calls.
+
+Verify the immutable release inventory with:
+
+```bash
+python3 scripts/verify_manifest.py
+```
+
+Run the release smoke test with:
+
+```bash
+python3 -m unittest tests.test_reproduction
+```
+
+## What is reproduced
+
+- the 600 → 27 → 13 → 10 temporal-refinement failure ladder;
+- 1,500/1,800 false promotions from exact public-score maximization;
+- 1,435/3/362 outcomes for the four-view agreement rule;
+- exhaustive defense-aware enumeration, including zero agreement-eligible false identifications;
+- the four-goal, three-model action ladder and trust-report/action joins;
+- the 1% high-noise paired comparison, fine/coarse residual AUROCs, Qwen control, and de-nesting transitions;
+- aggregate consistency for the sequential control and the later failed 2-D/Gray–Scott gates.
+
+## Layout
+
+- `papers/`: exact editable manuscript and figures.
+- `experiments/`: generation, verifier, policy, control, and validation source.
+- `evidence_view_benchmark_v1/`: frozen agent interfaces and scored machine-readable records.
+- `scripts/`: portable reproduction and manifest validation.
+- `output/audits/`: independent code/raw-data doomsday audit.
+- `docs/`: source-truth, interface, data, evaluation, and reproducibility contracts.
+
+## Evidence levels
+
+The primary 1,800-condition result is recomputed from all 100 raw gzip shards. The agent and auxiliary
+controls are recomputed from row-level JSON/JSONL. The 50-seed sequential result is locally available
+as code plus a compact aggregate, not raw episode shards, and is labeled accordingly. The later
+2-D/coupled and Gray–Scott results are included only as failed-gate evidence, not as positive transfer
+claims.
+
+## Release status
+
+This repository is private. Provider-output redistribution, dataset licensing, authorship approval,
+and final citation review remain required before any public release. No credentials are stored here.
+

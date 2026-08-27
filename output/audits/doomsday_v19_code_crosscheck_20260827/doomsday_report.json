@@ -1,0 +1,470 @@
+{
+  "audit_notes": [
+    {
+      "location": {
+        "end_line": 302,
+        "locator": "main.tex:300-302",
+        "section": "Results",
+        "source_file": "/Users/oroikon/Downloads/verisigs/papers/neurips_2026/sim2science_evidence_view_gaming_agent_goal_spotlight_20260826_v19/main.tex",
+        "span_status": "exact",
+        "start_line": 300
+      },
+      "note_id": "NOTE-001",
+      "observation": "The 50-seed sequential confirmation is locally present only as a compact aggregate, unlike the raw-shard evidence for the main 1,800-condition result.",
+      "why_demoted": "The aggregate is internally consistent and the claim is supporting, but this audit cannot independently re-score its episodes."
+    }
+  ],
+  "audit_pass_records": [
+    {
+      "notes": "All sources were TeX/code/machine-readable; repository Markdown was not read.",
+      "pass_name": "source_grounding",
+      "record_ids": [
+        "RES-001",
+        "RES-002",
+        "RES-003",
+        "RES-004",
+        "RES-005",
+        "RES-006"
+      ],
+      "status": "completed"
+    },
+    {
+      "pass_name": "claim_extraction",
+      "record_ids": [
+        "RES-001",
+        "RES-002",
+        "RES-003",
+        "RES-004",
+        "RES-005",
+        "RES-006"
+      ],
+      "status": "completed"
+    },
+    {
+      "pass_name": "witness_assignment",
+      "record_ids": [
+        "RES-001",
+        "RES-002",
+        "RES-003",
+        "RES-004",
+        "RES-005",
+        "RES-006"
+      ],
+      "status": "completed"
+    },
+    {
+      "notes": "Validated against report_schema.json after generation.",
+      "pass_name": "schema_validated_report",
+      "record_ids": [
+        "ISS-001"
+      ],
+      "status": "completed"
+    }
+  ],
+  "audit_scope": {
+    "complete_source_available": false,
+    "excluded_units": [
+      {
+        "label": "Literature verification",
+        "unit_type": "other"
+      },
+      {
+        "label": "Formal theorem audit",
+        "unit_type": "other"
+      },
+      {
+        "label": "PDF visual layout",
+        "unit_type": "other"
+      },
+      {
+        "label": "Repository Markdown reports and ledgers",
+        "unit_type": "other"
+      }
+    ],
+    "included_units": [
+      {
+        "label": "Empirical counts and rates",
+        "unit_type": "other"
+      },
+      {
+        "label": "Numerical mechanism values",
+        "unit_type": "other"
+      },
+      {
+        "label": "Policy semantics",
+        "unit_type": "other"
+      },
+      {
+        "label": "Agent-action joins",
+        "unit_type": "other"
+      },
+      {
+        "label": "Appendix empirical claims with code or machine-readable evidence",
+        "unit_type": "other"
+      },
+      {
+        "label": "Release-state implementation claim",
+        "unit_type": "other"
+      }
+    ],
+    "inside_audit_boundary": "TeX, Python source, JSON/JSONL/gzip JSON, CSV and TeX figure data.",
+    "limitations": [
+      "The full doomsday graph/theorem pipeline was intentionally restricted because the user prohibited repository Markdown and requested a code/findings audit."
+    ],
+    "missing_material": [
+      "Raw episode shards for the 50-seed sequential confirmation",
+      "Authenticated evidence for the claimed private pushed release"
+    ],
+    "outside_audit_boundary": "Repository Markdown, literature, visual PDF, provider-wide conclusions.",
+    "unit_of_analysis": "entire_paper"
+  },
+  "correction_memo": [
+    {
+      "defect_id": "ISS-001",
+      "failure_point": "main.tex:1462-1465",
+      "invalidated_downstream": [],
+      "memo_id": "MEMO-001",
+      "new_dependencies": [
+        "Remote repository URL",
+        "immutable commit SHA",
+        "clean-clone verification receipt"
+      ],
+      "outside_taxonomy_notes": "No numerical result changes are required.",
+      "provenance": "verified_from_source",
+      "repair_class": "documentation_only",
+      "repair_summary": "Bind the exact release commit or weaken the present-tense release statement until it exists."
+    }
+  ],
+  "dependency_discharges": [],
+  "dependency_graph": {
+    "edges": [],
+    "nodes": []
+  },
+  "dismissed_candidates_with_witness": [
+    {
+      "candidate_id": "CAND-001",
+      "candidate_issue_summary": "A03 and A08 fit-condition values looked copied after four-decimal rounding.",
+      "complement_attempt_status": "succeeded",
+      "demotion_reason": "Source-local raw values resolve the suspicion.",
+      "dismissal_probability_estimate": 0.99,
+      "exact_manuscript_equations_used": [
+        "Worked-action Table 1 definitions"
+      ],
+      "false_positive_risk": "low",
+      "lesson_for_future_audits": "Audit unrounded machine values before treating rounded equality as duplication.",
+      "reason_it_looked_suspicious": "Different row counts display the same 1.528 rounded value.",
+      "reconstruction_that_resolves_it": "Raw rows contain distinct values 1.5282484486377375 and 1.5283802186309356; Gram conditions are separately 7234.4125 and 7730.1386."
+    },
+    {
+      "candidate_id": "CAND-002",
+      "candidate_issue_summary": "The defense-aware search might hide wrong IDENTIFIED groups.",
+      "complement_attempt_status": "succeeded",
+      "demotion_reason": "Exhaustive raw-bank witness.",
+      "dismissal_probability_estimate": 0.995,
+      "exact_manuscript_equations_used": [
+        "All-mode eligibility rule and owner truth definition"
+      ],
+      "false_positive_risk": "low",
+      "lesson_for_future_audits": "Separate individual-view commission from agreement-eligible commission.",
+      "reason_it_looked_suspicious": "Individual views contain wrong identifications and the agreement bank is related.",
+      "reconstruction_that_resolves_it": "Independent enumeration of every eligible group found two individual wrong-identification rows per implementation but zero agreement-eligible wrong identifications; only the same three false omissions survive."
+    }
+  ],
+  "frame": "general",
+  "global_issues": [],
+  "issues": [
+    {
+      "affected_result_ids": [
+        "RES-006"
+      ],
+      "claim_type": "implementation_claim",
+      "complement_attempt_status": "inconclusive",
+      "confidence": "high",
+      "confidence_rationale": "The exact v19 source and raw primary shard directory are untracked; both reachable public remotes resolve to August 11 commits lacking v19 paths. A separate private remote remains possible, so this is under-justified rather than proved false.",
+      "description": "The empirical findings are locally traceable, but the manuscript's present-tense pushed-and-remotely-verified claim lacks an identifiable commit/remote witness in the available environment.",
+      "dismissal_probability_estimate": 0.2,
+      "failure_point_span": {
+        "end_line": 1465,
+        "locator": "main.tex:1462-1465",
+        "section": "Reproducibility and release",
+        "source_file": "/Users/oroikon/Downloads/verisigs/papers/neurips_2026/sim2science_evidence_view_gaming_agent_goal_spotlight_20260826_v19/main.tex",
+        "span_status": "exact",
+        "start_line": 1462
+      },
+      "false_positive_risk": "medium",
+      "first_failed_step": "No commit or remote reference containing the audited v19 source and raw primary confirmation closure could be identified.",
+      "issue_id": "ISS-001",
+      "minimal_repair": "Either provide and bind the private repository URL plus commit SHA and verify it from a clean clone, or change the sentence to say a local release candidate has been assembled until the push is complete.",
+      "outside_taxonomy_notes": "This is a release-state/reproducibility claim, not a defect in the numerical findings.",
+      "provenance": "verified_from_source",
+      "reconstruction_attempt": "Checked the root worktree, all nearby Git repositories and remotes, exact tracked-file membership, and reachable remote HEADs. GitHub CLI authentication was invalid, so an undisclosed private repository could not be excluded.",
+      "severity": "S2",
+      "severity_basis": "empirical_claim:medium:rank2:small",
+      "severity_override": false,
+      "severity_override_rationale": "Matrix recommendation applied directly.",
+      "tags": [
+        "OVERCLAIM"
+      ],
+      "taxonomy_fit": "clean_fit",
+      "title": "The current pushed-release claim is not auditable from the available code state"
+    }
+  ],
+  "paper_metadata": {
+    "audit_date": "2026-08-27",
+    "auditor": "Codex doomsday verification pass (user-restricted code/raw-data audit)",
+    "authors": [
+      "Anonymous Authors"
+    ],
+    "notes": "Repository Markdown was excluded by explicit user request.",
+    "source_files": [
+      "/Users/oroikon/Downloads/verisigs/papers/neurips_2026/sim2science_evidence_view_gaming_agent_goal_spotlight_20260826_v19/main.tex",
+      "/Users/oroikon/Downloads/verisigs/output/audits/doomsday_v19_code_crosscheck_20260827/code_crosscheck.json"
+    ],
+    "source_type": "mixed",
+    "title": "The Verifier Is Part of the Simulator: Evidence-View Gaming in Agentic Equation Discovery",
+    "venue_or_context": "NeurIPS 2026 Sim2Science workshop submission"
+  },
+  "protocol_version": "2.2.0-phase-a",
+  "result_registry": [
+    {
+      "claim_type": "empirical_claim",
+      "confidence": "high",
+      "dependencies": [],
+      "dependents": [],
+      "effective_status": "correct",
+      "exact_claim": "The 600/27/13/10 failure ladder, residual/discrepancy medians, 57.14 ratio, and AUROC 1.0 versus 0.5886 are correct.",
+      "explicit_assumptions": [
+        "Finite frozen action bank and manuscript-stated denominators."
+      ],
+      "implicit_assumptions_required": [],
+      "issue_ids": [],
+      "kind": "algorithmic_claim",
+      "label": "Temporal underintegration mechanism",
+      "location": {
+        "end_line": 261,
+        "locator": "main.tex:253-261",
+        "section": "Results",
+        "source_file": "/Users/oroikon/Downloads/verisigs/papers/neurips_2026/sim2science_evidence_view_gaming_agent_goal_spotlight_20260826_v19/main.tex",
+        "span_status": "exact",
+        "start_line": 253
+      },
+      "manuscript_order": 1,
+      "overall_status": "correct",
+      "paper_role": "central",
+      "proof_audit_summary": "Independent raw-artifact recomputation matched the manuscript.",
+      "proof_obligations": [],
+      "proof_status": "complete",
+      "result_id": "RES-001",
+      "statement_meaningfulness_status": "meaningful_as_stated",
+      "statement_truth_status": "verified_true",
+      "witness_strength": "independent"
+    },
+    {
+      "claim_type": "empirical_claim",
+      "confidence": "high",
+      "dependencies": [],
+      "dependents": [],
+      "effective_status": "correct",
+      "exact_claim": "Per implementation, confidence-max is 300/1500/0, fixed (25,5) is 1442/41/317, and four-mode agreement is 1435/3/362.",
+      "explicit_assumptions": [
+        "Finite frozen action bank and manuscript-stated denominators."
+      ],
+      "implicit_assumptions_required": [],
+      "issue_ids": [],
+      "kind": "algorithmic_claim",
+      "label": "Score-max attack and fixed policies",
+      "location": {
+        "end_line": 288,
+        "locator": "main.tex:274-288",
+        "section": "Results",
+        "source_file": "/Users/oroikon/Downloads/verisigs/papers/neurips_2026/sim2science_evidence_view_gaming_agent_goal_spotlight_20260826_v19/main.tex",
+        "span_status": "exact",
+        "start_line": 274
+      },
+      "manuscript_order": 2,
+      "overall_status": "correct",
+      "paper_role": "central",
+      "proof_audit_summary": "All 100 gzip shards were independently loaded and all 10,800 scored policy rows were recounted.",
+      "proof_obligations": [],
+      "proof_status": "complete",
+      "result_id": "RES-002",
+      "statement_meaningfulness_status": "meaningful_as_stated",
+      "statement_truth_status": "verified_true",
+      "witness_strength": "independent"
+    },
+    {
+      "claim_type": "empirical_claim",
+      "confidence": "high",
+      "dependencies": [],
+      "dependents": [],
+      "effective_status": "correct",
+      "exact_claim": "Exactly three of 1,500 in-library conditions have an eligible agreeing-wrong group, all false omissions; no eligible group yields a wrong identification.",
+      "explicit_assumptions": [
+        "Finite frozen action bank and manuscript-stated denominators."
+      ],
+      "implicit_assumptions_required": [],
+      "issue_ids": [],
+      "kind": "algorithmic_claim",
+      "label": "Defense-aware exhaustive search",
+      "location": {
+        "end_line": 285,
+        "locator": "main.tex:281-285",
+        "section": "Results",
+        "source_file": "/Users/oroikon/Downloads/verisigs/papers/neurips_2026/sim2science_evidence_view_gaming_agent_goal_spotlight_20260826_v19/main.tex",
+        "span_status": "exact",
+        "start_line": 281
+      },
+      "manuscript_order": 3,
+      "overall_status": "correct",
+      "paper_role": "central",
+      "proof_audit_summary": "Every node-wise four-mode group in all raw shards was independently enumerated; the same three owner keys were recovered.",
+      "proof_obligations": [],
+      "proof_status": "complete",
+      "result_id": "RES-003",
+      "statement_meaningfulness_status": "meaningful_as_stated",
+      "statement_truth_status": "verified_true",
+      "witness_strength": "independent"
+    },
+    {
+      "claim_type": "empirical_claim",
+      "confidence": "high",
+      "dependencies": [],
+      "dependents": [],
+      "effective_status": "correct",
+      "exact_claim": "The four-goal ladder and the 188/158/163 trust-report denominators with 2/175, 9/154, and 19/156 A03 selections are correct.",
+      "explicit_assumptions": [
+        "Finite frozen action bank and manuscript-stated denominators."
+      ],
+      "implicit_assumptions_required": [],
+      "issue_ids": [],
+      "kind": "algorithmic_claim",
+      "label": "Goal wording and trust/action contrast",
+      "location": {
+        "end_line": 298,
+        "locator": "main.tex:290-298",
+        "section": "Results",
+        "source_file": "/Users/oroikon/Downloads/verisigs/papers/neurips_2026/sim2science_evidence_view_gaming_agent_goal_spotlight_20260826_v19/main.tex",
+        "span_status": "exact",
+        "start_line": 290
+      },
+      "manuscript_order": 4,
+      "overall_status": "correct",
+      "paper_role": "central",
+      "proof_audit_summary": "The 5,184 owner-scored action rows were recounted and joined to raw M5 calls by model and case.",
+      "proof_obligations": [],
+      "proof_status": "complete",
+      "result_id": "RES-004",
+      "statement_meaningfulness_status": "meaningful_as_stated",
+      "statement_truth_status": "verified_true",
+      "witness_strength": "independent"
+    },
+    {
+      "claim_type": "empirical_claim",
+      "confidence": "medium",
+      "dependencies": [],
+      "dependents": [],
+      "effective_status": "correct_but_under_specified",
+      "exact_claim": "Sequential all-mode is 1509/0/291 at 9.738 views; Qwen is 750/11/535 and fixed challenge 1056/0/240; de-nesting only moves correct to inconclusive.",
+      "explicit_assumptions": [
+        "Finite frozen action bank and manuscript-stated denominators."
+      ],
+      "implicit_assumptions_required": [],
+      "issue_ids": [],
+      "kind": "algorithmic_claim",
+      "label": "Sequential and acquisition controls",
+      "location": {
+        "end_line": 306,
+        "locator": "main.tex:300-306",
+        "section": "Results",
+        "source_file": "/Users/oroikon/Downloads/verisigs/papers/neurips_2026/sim2science_evidence_view_gaming_agent_goal_spotlight_20260826_v19/main.tex",
+        "span_status": "exact",
+        "start_line": 300
+      },
+      "manuscript_order": 5,
+      "overall_status": "correct_but_under_specified",
+      "paper_role": "supporting",
+      "proof_audit_summary": "Qwen and de-nesting were recomputed from row-level data. Sequential numbers reconcile in a compact hash-bound aggregate, but its raw confirmation shards are absent locally.",
+      "proof_obligations": [],
+      "proof_status": "incomplete",
+      "result_id": "RES-005",
+      "statement_meaningfulness_status": "meaningful_as_stated",
+      "statement_truth_status": "verified_true",
+      "witness_strength": "audit_only"
+    },
+    {
+      "claim_type": "implementation_claim",
+      "confidence": "medium",
+      "dependencies": [],
+      "dependents": [],
+      "effective_status": "cannot_verify",
+      "exact_claim": "A validated private release candidate containing the primary benchmark closure has been pushed and remotely verified.",
+      "explicit_assumptions": [
+        "Finite frozen action bank and manuscript-stated denominators."
+      ],
+      "implicit_assumptions_required": [],
+      "issue_ids": [
+        "ISS-001"
+      ],
+      "kind": "algorithmic_claim",
+      "label": "Private release pushed and remotely verified",
+      "location": {
+        "end_line": 1467,
+        "locator": "main.tex:1462-1467",
+        "section": "Reproducibility and release",
+        "source_file": "/Users/oroikon/Downloads/verisigs/papers/neurips_2026/sim2science_evidence_view_gaming_agent_goal_spotlight_20260826_v19/main.tex",
+        "span_status": "exact",
+        "start_line": 1462
+      },
+      "manuscript_order": 6,
+      "overall_status": "cannot_verify",
+      "paper_role": "supporting",
+      "proof_audit_summary": "The exact v19 paper and primary confirmation shards are untracked in the local root repository; known GitHub-backed repositories are older. Private GitHub state could not be authenticated, so the statement is not verified rather than proved false.",
+      "proof_obligations": [],
+      "proof_status": "not_provided",
+      "result_id": "RES-006",
+      "statement_meaningfulness_status": "meaningful_as_stated",
+      "statement_truth_status": "plausibly_true_but_unverified",
+      "witness_strength": "audit_only"
+    }
+  ],
+  "schema_version": "2.2.0",
+  "scope_reconciliation_records": [],
+  "summary_counts": {
+    "cannot_verify": 1,
+    "correct_but_under_specified": 1,
+    "critical_issue_ids": [],
+    "false_as_stated": 0,
+    "global_issue_count": 0,
+    "incomplete_proofs": 0,
+    "issue_count": 1,
+    "severity_counts": {
+      "S0": 0,
+      "S1": 0,
+      "S2": 1,
+      "S3": 0,
+      "S4": 0
+    },
+    "total_named_results_audited": 6,
+    "verification_status_counts": {
+      "highly-suspect": 0,
+      "proved-broken": 0,
+      "under-justified": 1,
+      "underspecified": 0
+    },
+    "verified_as_written": 4
+  },
+  "suspicions": [],
+  "uniform_claim_records": [],
+  "witness_propagation": {
+    "effective_status_by_result": {
+      "RES-001": "correct",
+      "RES-002": "correct",
+      "RES-003": "correct",
+      "RES-004": "correct",
+      "RES-005": "correct_but_under_specified",
+      "RES-006": "cannot_verify"
+    },
+    "scope": "user_restricted"
+  },
+  "witness_registry": []
+}

@@ -1,0 +1,229 @@
+{
+  "agreeing_wrong_cases": [
+    {
+      "episode_id": "confirm_v2_fd_bdf_10212_0_5",
+      "implementation": "fd_bdf",
+      "owner_episode_key": [
+        "advection_diffusion",
+        10212,
+        "correlated",
+        0.005
+      ],
+      "reference_correct": false,
+      "reference_status": "OUT_OF_GRAMMAR",
+      "wrong_groups": [
+        {
+          "kind": "false_omission",
+          "nodes": 7,
+          "signature": [
+            "OUT_OF_GRAMMAR",
+            []
+          ]
+        }
+      ]
+    },
+    {
+      "episode_id": "confirm_v2_fd_bdf_10246_0_5",
+      "implementation": "fd_bdf",
+      "owner_episode_key": [
+        "advection_diffusion",
+        10246,
+        "correlated",
+        0.005
+      ],
+      "reference_correct": false,
+      "reference_status": "OUT_OF_GRAMMAR",
+      "wrong_groups": [
+        {
+          "kind": "false_omission",
+          "nodes": 7,
+          "signature": [
+            "OUT_OF_GRAMMAR",
+            []
+          ]
+        }
+      ]
+    },
+    {
+      "episode_id": "confirm_v2_fd_bdf_10247_0_5",
+      "implementation": "fd_bdf",
+      "owner_episode_key": [
+        "advection_diffusion",
+        10247,
+        "correlated",
+        0.005
+      ],
+      "reference_correct": false,
+      "reference_status": "OUT_OF_GRAMMAR",
+      "wrong_groups": [
+        {
+          "kind": "false_omission",
+          "nodes": 7,
+          "signature": [
+            "OUT_OF_GRAMMAR",
+            []
+          ]
+        }
+      ]
+    },
+    {
+      "episode_id": "confirm_v2_spectral_etdrk4_10212_0_5",
+      "implementation": "spectral_etdrk4",
+      "owner_episode_key": [
+        "advection_diffusion",
+        10212,
+        "correlated",
+        0.005
+      ],
+      "reference_correct": false,
+      "reference_status": "OUT_OF_GRAMMAR",
+      "wrong_groups": [
+        {
+          "kind": "false_omission",
+          "nodes": 7,
+          "signature": [
+            "OUT_OF_GRAMMAR",
+            []
+          ]
+        }
+      ]
+    },
+    {
+      "episode_id": "confirm_v2_spectral_etdrk4_10246_0_5",
+      "implementation": "spectral_etdrk4",
+      "owner_episode_key": [
+        "advection_diffusion",
+        10246,
+        "correlated",
+        0.005
+      ],
+      "reference_correct": false,
+      "reference_status": "OUT_OF_GRAMMAR",
+      "wrong_groups": [
+        {
+          "kind": "false_omission",
+          "nodes": 7,
+          "signature": [
+            "OUT_OF_GRAMMAR",
+            []
+          ]
+        }
+      ]
+    },
+    {
+      "episode_id": "confirm_v2_spectral_etdrk4_10247_0_5",
+      "implementation": "spectral_etdrk4",
+      "owner_episode_key": [
+        "advection_diffusion",
+        10247,
+        "correlated",
+        0.005
+      ],
+      "reference_correct": false,
+      "reference_status": "OUT_OF_GRAMMAR",
+      "wrong_groups": [
+        {
+          "kind": "false_omission",
+          "nodes": 7,
+          "signature": [
+            "OUT_OF_GRAMMAR",
+            []
+          ]
+        }
+      ]
+    }
+  ],
+  "analysis": "retrospective_truth_aware_finite_bank_enumeration",
+  "episode_count": 3600,
+  "individual_false_identification_cases": [
+    {
+      "action": "A00",
+      "episode_id": "confirm_v2_fd_bdf_10236_4_2",
+      "implementation": "fd_bdf",
+      "modes": 2,
+      "nodes": 7,
+      "reported_support": [
+        "u_x",
+        "u_xxx",
+        "u u_x"
+      ],
+      "truth_support": [
+        "u_xxx",
+        "u u_x"
+      ]
+    },
+    {
+      "action": "A00",
+      "episode_id": "confirm_v2_fd_bdf_10242_4_2",
+      "implementation": "fd_bdf",
+      "modes": 2,
+      "nodes": 7,
+      "reported_support": [
+        "u_x",
+        "u_xxx",
+        "u u_x"
+      ],
+      "truth_support": [
+        "u_xxx",
+        "u u_x"
+      ]
+    },
+    {
+      "action": "A00",
+      "episode_id": "confirm_v2_spectral_etdrk4_10236_4_2",
+      "implementation": "spectral_etdrk4",
+      "modes": 2,
+      "nodes": 7,
+      "reported_support": [
+        "u_x",
+        "u_xxx",
+        "u u_x"
+      ],
+      "truth_support": [
+        "u_xxx",
+        "u u_x"
+      ]
+    },
+    {
+      "action": "A00",
+      "episode_id": "confirm_v2_spectral_etdrk4_10242_4_2",
+      "implementation": "spectral_etdrk4",
+      "modes": 2,
+      "nodes": 7,
+      "reported_support": [
+        "u_x",
+        "u_xxx",
+        "u u_x"
+      ],
+      "truth_support": [
+        "u_xxx",
+        "u u_x"
+      ]
+    }
+  ],
+  "per_implementation": {
+    "fd_bdf": {
+      "confirmed_false_identifications": 0,
+      "confirmed_false_omissions": 3,
+      "deployed_rule_false": 3,
+      "episodes": 1800,
+      "exhaustive_attackable": 3,
+      "exhaustive_attackable_in_library": 3,
+      "in_library": 1500,
+      "individual_false_identification_rows": 2
+    },
+    "spectral_etdrk4": {
+      "confirmed_false_identifications": 0,
+      "confirmed_false_omissions": 3,
+      "deployed_rule_false": 3,
+      "episodes": 1800,
+      "exhaustive_attackable": 3,
+      "exhaustive_attackable_in_library": 3,
+      "in_library": 1500,
+      "individual_false_identification_rows": 2
+    }
+  },
+  "security_guarantee": false,
+  "shard_count": 100,
+  "shard_set_sha256": "71baf23f08cfd677dc70c762146f761d70375c468354ee5921b10935e88df16f"
+}

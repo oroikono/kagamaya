@@ -1,0 +1,30 @@
+% Editable, colorblind-safe TikZ source for Gates 0--3.
+\begin{tikzpicture}[
+  font=\scriptsize,
+  >=Latex,
+  gate/.style={rounded corners=2pt,draw=black!75,very thick,align=left,
+    minimum height=1.56cm,text width=0.205\linewidth,inner sep=5pt},
+  flow/.style={-Latex,very thick,draw=black!65},
+]
+\node[gate,fill={rgb,255:red,230;green,245;blue,255}] (g0) {
+  \textbf{Gate 0: inventory}\\
+  197 predecessor files\\[-1pt]
+  no mutation};
+\node[gate,fill={rgb,255:red,255;green,244;blue,214},right=0.018\linewidth of g0] (g1) {
+  \textbf{Gate 1: migrate}\\
+  216 public cases +\\[-1pt]
+  216 held-out sidecars\\[-1pt]
+  9/9 tests};
+\node[gate,fill={rgb,255:red,230;green,248;blue,240},right=0.018\linewidth of g1] (g2) {
+  \textbf{Gate 2: red tests}\\
+  leakage, budget, replay\\[-1pt]
+  3/3 seeded faults found};
+\node[gate,fill={rgb,255:red,245;green,232;blue,255},right=0.018\linewidth of g2] (g3) {
+  \textbf{Gate 3: sealed env}\\
+  18/18 tests; 6,912 views\\[-1pt]
+  10k leakage sequences\\[-1pt]
+  432/432 replay};
+\draw[flow] (g0) -- (g1);
+\draw[flow] (g1) -- (g2);
+\draw[flow] (g2) -- (g3);
+\end{tikzpicture}

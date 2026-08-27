@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "maintrack.spotlight-stage-authorization.v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "authority", "decision", "stage", "freeze_digest",
+    "input_bindings", "root_review_receipt", "single_stage_only",
+    "post_outcome_tuning_permitted", "external_signature", "claim_ceiling",
+    "authorization_digest"
+  ],
+  "properties": {
+    "schema_version": {"const": "maintrack.spotlight-stage-authorization.v1"},
+    "authority": {"const": "root"},
+    "decision": {"const": "AUTHORIZE_EXACT_STAGE"},
+    "stage": {"enum": ["internal_mechanism", "internal_confirmation", "external_validation", "external_confirmation"]},
+    "freeze_digest": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "input_bindings": {"type": "object", "additionalProperties": {"type": "string", "pattern": "^[0-9a-f]{64}$"}},
+    "root_review_receipt": {"type": "string", "minLength": 1},
+    "single_stage_only": {"const": true},
+    "post_outcome_tuning_permitted": {"const": false},
+    "external_signature": {"const": false},
+    "claim_ceiling": {"type": "string"},
+    "authorization_digest": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+  }
+}

@@ -1,0 +1,119 @@
+% ============================================================================
+% MAIN RESULTS FIGURE — EDITABLE TIKZ
+% Left: false promotions over the same 180 in-library cases per model/goal.
+% Right: false-promotion/coverage tradeoff for the three primary fixed policies;
+% marker area encodes views required (one, one, and four).
+% All values are bound by verify_manuscript_claims.py.
+% ============================================================================
+\providecommand{\FOpusGoalAccuracy}{2}
+\providecommand{\FOpusGoalDecisive}{13}
+\providecommand{\FOpusGoalScore}{174}
+\providecommand{\FOpusGoalOmission}{179}
+\providecommand{\FSonnetGoalAccuracy}{7}
+\providecommand{\FSonnetGoalDecisive}{13}
+\providecommand{\FSonnetGoalScore}{144}
+\providecommand{\FSonnetGoalOmission}{180}
+\providecommand{\FHaikuGoalAccuracy}{5}
+\providecommand{\FHaikuGoalDecisive}{14}
+\providecommand{\FHaikuGoalScore}{102}
+\providecommand{\FHaikuGoalOmission}{180}
+
+\providecommand{\FMainConfFalse}{83.33}
+\providecommand{\FMainFixedFalse}{2.28}
+\providecommand{\FMainAgreeFalse}{0.167}
+\providecommand{\FMainConfCoverage}{100.00}
+\providecommand{\FMainFixedCoverage}{82.39}
+\providecommand{\FMainAgreeCoverage}{79.89}
+\providecommand{\FMainConfViews}{1}
+\providecommand{\FMainFixedViews}{1}
+\providecommand{\FMainAgreeViews}{4}
+
+% Panel A mapping: 0 percent -> 0.80cm and 100 percent -> 3.00cm.
+\pgfmathsetmacro{\yOpusGoalAccuracy}{.80 + 2.20*(\FOpusGoalAccuracy/180)}
+\pgfmathsetmacro{\yOpusGoalDecisive}{.80 + 2.20*(\FOpusGoalDecisive/180)}
+\pgfmathsetmacro{\yOpusGoalScore}{.80 + 2.20*(\FOpusGoalScore/180)}
+\pgfmathsetmacro{\yOpusGoalOmission}{.80 + 2.20*(\FOpusGoalOmission/180)}
+\pgfmathsetmacro{\ySonnetGoalAccuracy}{.80 + 2.20*(\FSonnetGoalAccuracy/180)}
+\pgfmathsetmacro{\ySonnetGoalDecisive}{.80 + 2.20*(\FSonnetGoalDecisive/180)}
+\pgfmathsetmacro{\ySonnetGoalScore}{.80 + 2.20*(\FSonnetGoalScore/180)}
+\pgfmathsetmacro{\ySonnetGoalOmission}{.80 + 2.20*(\FSonnetGoalOmission/180)}
+\pgfmathsetmacro{\yHaikuGoalAccuracy}{.80 + 2.20*(\FHaikuGoalAccuracy/180)}
+\pgfmathsetmacro{\yHaikuGoalDecisive}{.80 + 2.20*(\FHaikuGoalDecisive/180)}
+\pgfmathsetmacro{\yHaikuGoalScore}{.80 + 2.20*(\FHaikuGoalScore/180)}
+\pgfmathsetmacro{\yHaikuGoalOmission}{.80 + 2.20*(\FHaikuGoalOmission/180)}
+
+% Panel B mapping: coverage 78--102% spans x=.95--4.91cm; false-promotion
+% rates use a base-10 logarithmic axis from .1% to 100%.
+\pgfmathsetmacro{\xConf}{.95 + (\FMainConfCoverage-78)*.165}
+\pgfmathsetmacro{\xFixed}{.95 + (\FMainFixedCoverage-78)*.165}
+\pgfmathsetmacro{\xAgree}{.95 + (\FMainAgreeCoverage-78)*.165}
+\pgfmathsetmacro{\yConf}{.80 + (ln(\FMainConfFalse)/ln(10)+1)*.733333}
+\pgfmathsetmacro{\yFixed}{.80 + (ln(\FMainFixedFalse)/ln(10)+1)*.733333}
+\pgfmathsetmacro{\yAgree}{.80 + (ln(\FMainAgreeFalse)/ln(10)+1)*.733333}
+
+\begin{tikzpicture}[x=1cm,y=1cm,font=\sffamily\scriptsize]
+  \definecolor{cbblue}{HTML}{0072B2}
+  \definecolor{cborange}{HTML}{E69F00}
+  \definecolor{cbvermillion}{HTML}{D55E00}
+  \definecolor{cbgreen}{HTML}{009E73}
+  \definecolor{cbcharcoal}{HTML}{273142}
+
+  % Panel A: all four goal arms of the forced-tool campaign.
+  \node[anchor=west,font=\sffamily\bfseries] at (0,3.55) {(a) False omissions by goal};
+  \draw[->,thick] (.70,.80) -- (5.00,.80);
+  \draw[->,thick] (.70,.80) -- (.70,3.12);
+  \node[rotate=90] at (.12,1.95) {false promotion (\%)};
+  \foreach \y/\lab in {.80/0,1.35/25,1.90/50,2.45/75,3.00/100} {
+    \draw[black!15] (.70,\y) -- (4.75,\y);
+    \node[left] at (.66,\y) {\lab};
+  }
+  \foreach \x/\lab in {1.20/accuracy,2.30/decisive,3.40/score,4.50/omission}
+    {\node[below,align=center] at (\x,.75) {\lab};}
+  \draw[cbblue,very thick]
+    plot[mark=*,mark size=1.7pt] coordinates
+    {(1.20,\yOpusGoalAccuracy) (2.30,\yOpusGoalDecisive) (3.40,\yOpusGoalScore) (4.50,\yOpusGoalOmission)};
+  \draw[cbgreen,very thick,dashed]
+    plot[mark=square*,mark size=1.6pt] coordinates
+    {(1.20,\ySonnetGoalAccuracy) (2.30,\ySonnetGoalDecisive) (3.40,\ySonnetGoalScore) (4.50,\ySonnetGoalOmission)};
+  \draw[cbvermillion,very thick,densely dotted]
+    plot[mark=triangle*,mark size=1.9pt] coordinates
+    {(1.20,\yHaikuGoalAccuracy) (2.30,\yHaikuGoalDecisive) (3.40,\yHaikuGoalScore) (4.50,\yHaikuGoalOmission)};
+  \draw[cbblue,very thick] (.92,3.27)--(1.16,3.27); \fill[cbblue] (1.04,3.27) circle (.032);
+  \node[anchor=west] at (1.21,3.27) {Opus};
+  \draw[cbgreen,very thick,dashed] (2.00,3.27)--(2.24,3.27);
+  \node[anchor=west] at (2.29,3.27) {Sonnet};
+  \draw[cbvermillion,very thick,densely dotted] (3.31,3.27)--(3.55,3.27);
+  \node[anchor=west] at (3.60,3.27) {Haiku};
+
+  % Panel B: risk--coverage--cost tradeoff for the primary fixed policies.
+  \begin{scope}[xshift=5.50cm]
+    \node[anchor=west,font=\sffamily\bfseries] at (0,3.55)
+      {(b) Risk--coverage--cost tradeoff};
+    \draw[->,thick] (.70,.80) -- (5.00,.80);
+    \draw[->,thick] (.70,.80) -- (.70,3.12);
+    \node[rotate=90] at (.10,1.95) {false promotion (\%, log)};
+    \foreach \y/\lab in {.80/{0.1},1.533/{1},2.267/{10},3.00/{100}} {
+      \draw[black!15] (.70,\y) -- (4.78,\y);
+      \node[left] at (.66,\y) {\lab};
+    }
+    \foreach \x/\lab in {1.28/80,2.93/90,4.58/100} {
+      \draw[black!15] (\x,.80) -- (\x,3.00);
+      \node[below] at (\x,.75) {\lab};
+    }
+    \node at (2.93,.27) {terminal coverage (\%)};
+    \draw[black!45,dashed,thick] (\xAgree,\yAgree) -- (\xFixed,\yFixed) -- (\xConf,\yConf);
+    % Marker area encodes views required: one, one, and four.
+    \filldraw[fill=cbgreen!72,draw=cbgreen!90!black,very thick] (\xAgree,\yAgree) circle (.11);
+    \filldraw[fill=cbblue!76,draw=cbblue!90!black,very thick] (\xFixed,\yFixed) circle (.055);
+    \filldraw[fill=cbvermillion!74,draw=cbvermillion!90!black,very thick] (\xConf,\yConf) circle (.055);
+    \node[anchor=west,align=left,font=\sffamily\fontsize{6.2}{6.8}\selectfont]
+      at (1.43,.98) {agreement\\0.167\%, 79.89\%\\4 views};
+    \node[anchor=west,align=left,font=\sffamily\fontsize{6.2}{6.8}\selectfont]
+      at (1.83,1.80) {fixed (25,5)\\2.28\%, 82.39\%\\1 view};
+    \node[anchor=east,align=right,font=\sffamily\fontsize{6.2}{6.8}\selectfont]
+      at (4.46,2.83) {score max\\83.33\%, 100\%\\1 view};
+  \end{scope}
+
+  \node[anchor=west,text=cbcharcoal!68,font=\sffamily\fontsize{6.4}{7.0}\selectfont]
+    at (.70,-.08) {Left: 180 in-library cases per model/goal. Right: 1,800 matched conditions per policy; lower false and higher coverage are preferred.};
+\end{tikzpicture}

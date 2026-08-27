@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "maintrack.spotlight-2d-replication.internal-shard.v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "source_closure_sha256", "config", "metadata",
+    "episode_count", "view_record_count", "episodes", "owner_labels",
+    "convergence", "content_sha256"
+  ],
+  "properties": {
+    "schema_version": {"const": "maintrack.spotlight-2d-replication.v1.shard"},
+    "source_closure_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "config": {"type": "object"},
+    "metadata": {"type": "object"},
+    "episode_count": {"const": 75},
+    "view_record_count": {"const": 900},
+    "episodes": {"type": "array", "minItems": 75, "maxItems": 75},
+    "owner_labels": {"type": "array", "minItems": 75, "maxItems": 75},
+    "convergence": {"type": "array", "minItems": 15, "maxItems": 15},
+    "content_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+  }
+}

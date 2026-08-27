@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://verisigs.local/evidence-view/report-evidence-trust-v2.schema.json",
+  "title": "report_evidence_trust_v2 arguments",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "spectral_etdrk4_action",
+    "fd_bdf_action",
+    "primary_signal",
+    "explanation"
+  ],
+  "properties": {
+    "spectral_etdrk4_action": {
+      "type": "string",
+      "enum": ["A00", "A01", "A02", "A03", "A04", "A05", "A06", "A07", "A08", "A09", "A10", "A11"]
+    },
+    "fd_bdf_action": {
+      "type": "string",
+      "enum": ["A00", "A01", "A02", "A03", "A04", "A05", "A06", "A07", "A08", "A09", "A10", "A11"]
+    },
+    "primary_signal": {
+      "type": "string",
+      "enum": ["terminal_disagreement", "cross_producer_disagreement", "residual", "score_gap", "conditioning", "resolution_test_space", "cost", "other"]
+    },
+    "explanation": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 600
+    }
+  }
+}

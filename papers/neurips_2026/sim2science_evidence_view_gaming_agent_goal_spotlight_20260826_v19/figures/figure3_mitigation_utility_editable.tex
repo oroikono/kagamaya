@@ -1,0 +1,81 @@
+% ============================================================================
+% APPENDIX FIGURE 6 EDIT BLOCK
+% Edit percentages/labels here. Bar heights are computed automatically.
+% Values are finite percentages over the frozen 1,800-condition experiment.
+% ============================================================================
+\providecommand{\FConfFalse}{83.33}
+\providecommand{\FFixedFalse}{2.28}
+\providecommand{\FConsensusFalse}{0.167}
+\providecommand{\FConfCorrect}{16.67}
+\providecommand{\FConfCoverage}{100.00}
+\providecommand{\FFixedCorrect}{80.11}
+\providecommand{\FFixedCoverage}{82.39}
+\providecommand{\FConsensusCorrect}{79.72}
+\providecommand{\FConsensusCoverage}{79.89}
+\providecommand{\FPolicyOne}{confidence\\max}
+\providecommand{\FPolicyTwo}{fixed\\$(25,5)$}
+\providecommand{\FPolicyThree}{all-mode\\consensus}
+\providecommand{\FFigureFootnote}{1,800 factorial conditions from 300 hidden trajectories; discrete rates repeat on both producer components.}
+
+% Axis mapping: 0 percent -> 0.80cm and 100 percent -> 3.00cm.
+\pgfmathsetmacro{\yConfFalse}{.80 + 2.20*(\FConfFalse/100)}
+\pgfmathsetmacro{\yFixedFalse}{.80 + 2.20*(\FFixedFalse/100)}
+\pgfmathsetmacro{\yConsensusFalse}{.80 + 2.20*(\FConsensusFalse/100)}
+\pgfmathsetmacro{\yConfCorrect}{.80 + 2.20*(\FConfCorrect/100)}
+\pgfmathsetmacro{\yConfCoverage}{.80 + 2.20*(\FConfCoverage/100)}
+\pgfmathsetmacro{\yFixedCorrect}{.80 + 2.20*(\FFixedCorrect/100)}
+\pgfmathsetmacro{\yFixedCoverage}{.80 + 2.20*(\FFixedCoverage/100)}
+\pgfmathsetmacro{\yConsensusCorrect}{.80 + 2.20*(\FConsensusCorrect/100)}
+\pgfmathsetmacro{\yConsensusCoverage}{.80 + 2.20*(\FConsensusCoverage/100)}
+
+\begin{tikzpicture}[x=1cm,y=1cm,font=\scriptsize]
+  \definecolor{cbblue}{HTML}{0072B2}
+  \definecolor{cbgreen}{HTML}{009E73}
+  \definecolor{cbvermillion}{HTML}{D55E00}
+
+  \node[anchor=west,font=\bfseries] at (0,3.55) {(a) False promotions};
+  \draw[->,thick] (.70,.80) -- (5.00,.80);
+  \draw[->,thick] (.70,.80) -- (.70,3.12);
+  \node[rotate=90] at (.12,1.95) {false (\%)};
+  \foreach \y/\lab in {.80/0,1.35/25,1.90/50,2.45/75,3.00/100} {
+    \draw[black!15] (.70,\y) -- (4.75,\y);
+    \node[left] at (.66,\y) {\lab};
+  }
+  \fill[cbvermillion!78] (1.08,.80) rectangle (1.64,\yConfFalse);
+  \fill[cbvermillion!78] (2.48,.80) rectangle (3.04,\yFixedFalse);
+  \fill[cbvermillion!78] (3.88,.80) rectangle (4.44,\yConsensusFalse);
+  \node[above,font=\bfseries] at (1.36,\yConfFalse) {\FConfFalse};
+  \node[above,font=\bfseries] at (2.76,\yFixedFalse) {\FFixedFalse};
+  \node[above,font=\bfseries] at (4.16,\yConsensusFalse) {\FConsensusFalse};
+  \node[below,align=center] at (1.36,.75) {\FPolicyOne};
+  \node[below,align=center] at (2.76,.75) {\FPolicyTwo};
+  \node[below,align=center] at (4.16,.75) {\FPolicyThree};
+
+  \begin{scope}[xshift=5.35cm]
+    \node[anchor=west,font=\bfseries] at (0,3.55) {(b) Utility retained};
+    \draw[->,thick] (.70,.80) -- (5.00,.80);
+    \draw[->,thick] (.70,.80) -- (.70,3.12);
+    \node[rotate=90] at (.12,1.95) {rate (\%)};
+    \foreach \y/\lab in {.80/0,1.35/25,1.90/50,2.45/75,3.00/100} {
+      \draw[black!15] (.70,\y) -- (4.75,\y);
+      \node[left] at (.66,\y) {\lab};
+    }
+    % Blue is held-out-truth correct; green is terminal coverage.
+    \fill[cbblue!80] (1.05,.80) rectangle (1.34,\yConfCorrect);
+    \fill[cbgreen!70] (1.38,.80) rectangle (1.67,\yConfCoverage);
+    \fill[cbblue!80] (2.45,.80) rectangle (2.74,\yFixedCorrect);
+    \fill[cbgreen!70] (2.78,.80) rectangle (3.07,\yFixedCoverage);
+    \fill[cbblue!80] (3.85,.80) rectangle (4.14,\yConsensusCorrect);
+    \fill[cbgreen!70] (4.18,.80) rectangle (4.47,\yConsensusCoverage);
+    \node[below,align=center] at (1.36,.75) {\FPolicyOne};
+    \node[below,align=center] at (2.76,.75) {\FPolicyTwo};
+    \node[below,align=center] at (4.16,.75) {\FPolicyThree};
+    \fill[cbblue!80] (1.05,3.20) rectangle (1.25,3.31);
+    \node[anchor=west] at (1.30,3.255) {held-out correct};
+    \fill[cbgreen!70] (2.85,3.20) rectangle (3.05,3.31);
+    \node[anchor=west] at (3.10,3.255) {terminal coverage};
+  \end{scope}
+
+  \node[anchor=west,text=black!65] at (.70,-.08)
+    {\FFigureFootnote};
+\end{tikzpicture}
