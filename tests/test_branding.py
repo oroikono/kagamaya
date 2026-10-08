@@ -36,6 +36,14 @@ class BrandingTests(unittest.TestCase):
     def test_readme_references_the_bundled_header(self):
         self.assertIn('assets/branding/kagamaya-perspective.png', (ROOT / 'README.md').read_text())
 
+    def test_current_repository_links_use_project_name(self):
+        for relative in ('STATUS.md', 'docs/artifact_links.md'):
+            with self.subTest(relative=relative):
+                text = (ROOT / relative).read_text()
+                self.assertIn('https://github.com/oroikono/kagamaya', text)
+                self.assertNotIn('https://github.com/oroikono/evidence-view-gaming-sim2science', text)
+        self.assertIn('release/reproduction-and-hub-links', (ROOT / 'STATUS.md').read_text())
+
 
 if __name__ == '__main__':
     unittest.main()

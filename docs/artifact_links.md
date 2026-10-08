@@ -5,7 +5,7 @@ or imply that development artifacts reproduce the latest manuscript.
 
 ## Paper source and historical reproduction
 
-[GitHub paper repository](https://github.com/oroikono/evidence-view-gaming-sim2science)
+[GitHub paper repository](https://github.com/oroikono/kagamaya)
 is private. Its historical default-branch release contains the v19 manuscript
 and a 33-check stored-record recount. It is not the current camera-ready source.
 The cleanup branch changes command failure handling and documentation, not the
@@ -33,5 +33,7 @@ baseline, not a completed result release. Do not cite it as evidence of new
 scientific findings. No paper-specific Hugging Face Space was found among the
 account's listed Spaces.
 
-No repository was renamed, made public, or uploaded to Hugging Face in this
-cleanup. Author, license and provider-output approvals remain outstanding.
+The GitHub paper repository was renamed to `kagamaya` on 8 October 2026;
+visibility remains private. No repository was made public or uploaded to
+Hugging Face in this cleanup. Author, license and provider-output approvals
+remain outstanding.
