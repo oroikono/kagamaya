@@ -10,8 +10,14 @@ do not change the manuscript title or the scope of the archived evidence.
 [Reproduce](#one-command-reproduction) · [Artifacts](docs/artifact_links.md) ·
 [Workshop film](docs/video.md) · [Emblem and assets](assets/branding/README.md)
 
-Private, hash-bound release repository for the NeurIPS 2026 Sim2Science workshop manuscript:
+Accepted at [Sim2Science: ML with Imperfect Scientific Models](https://www.sim2science.com/),
+a **NeurIPS 2026 workshop** (not the main conference track).
+
+Private, hash-bound release repository for the workshop paper:
 **“The Verifier Is Part of the Simulator: Evidence-View Gaming in Agentic Equation Discovery.”**
+
+The direct OpenReview paper link is pending verification; the link above is to
+the workshop, not to the paper PDF.
 
 This repository contains the exact v19 manuscript source, the executable experiment code retained for
 the paper, the raw machine-readable evidence needed for the primary results, and a standard-library

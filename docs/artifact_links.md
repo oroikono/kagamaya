@@ -5,6 +5,12 @@ or imply that development artifacts reproduce the latest manuscript.
 
 ## Paper source and historical reproduction
 
+The paper was accepted at [Sim2Science](https://www.sim2science.com/), a NeurIPS
+2026 workshop. The author-supplied decision records acceptance on 29 September
+2026. The [official OpenReview venue](https://openreview.net/group?id=NeurIPS.cc/2026/Workshop/Sim2Sci)
+is linked from the workshop's call for papers. A direct paper/forum URL has not
+yet been verified; neither venue link is presented as a paper PDF link.
+
 [GitHub paper repository](https://github.com/oroikono/kagamaya)
 is private. Its historical default-branch release contains the v19 manuscript
 and a 33-check stored-record recount. It is not the current camera-ready source.

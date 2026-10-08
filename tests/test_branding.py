@@ -45,6 +45,15 @@ class BrandingTests(unittest.TestCase):
                 self.assertIn('](' + relative + ')', readme)
                 self.assertTrue((ROOT / relative).is_file())
 
+    def test_workshop_status_does_not_imply_main_track_or_verified_paper_url(self):
+        readme = (ROOT / 'README.md').read_text()
+        self.assertIn('https://www.sim2science.com/', readme)
+        self.assertIn('not the main conference track', readme)
+        self.assertIn('direct OpenReview paper link is pending verification', readme)
+        notes = (ROOT / 'docs/artifact_links.md').read_text()
+        self.assertIn('Workshop/Sim2Sci', notes)
+        self.assertIn('neither venue link is presented as a paper PDF link', notes)
+
     def test_current_repository_links_use_project_name(self):
         for relative in ('STATUS.md', 'docs/artifact_links.md'):
             with self.subTest(relative=relative):
