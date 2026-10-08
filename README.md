@@ -1,4 +1,11 @@
-# Evidence-View Gaming in Agentic Equation Discovery
+<p align="center">
+  <img src="assets/branding/kagamaya-lockup.png" width="720" alt="Kagamaya: a mirror with an intact wave and an interrupted reflection. Evidence-view gaming." />
+</p>
+
+# Kagamaya
+
+Evidence-view gaming in agentic equation discovery. The project name and emblem
+do not change the manuscript title or the scope of the archived evidence.
 
 Private, hash-bound release repository for the NeurIPS 2026 Sim2Science workshop manuscript:
 **“The Verifier Is Part of the Simulator: Evidence-View Gaming in Agentic Equation Discovery.”**
