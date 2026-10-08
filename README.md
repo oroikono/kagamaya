@@ -4,11 +4,25 @@
 
 # Kagamaya
 
+**K-A-G-A-M-A-Y-A** · pronounced **kah-gah-MAH-yah** (four syllables).
+
+A coined name inspired by Japanese
+[*kagami* (鏡), “mirror”](https://www.kanjipedia.jp/kotoba/0001550900), and Sanskrit
+[*māyā*, associated with appearance and illusion](https://www.encyclopedia.com/philosophy-and-religion/eastern-religions/hinduism/maya-magic).
+Our poetic reading is **“mirror of appearances”**, not a literal translation
+or an established Japanese/Sanskrit word. Like the emblem, it captures the
+paper's question: the trajectory stays the same, but its numerical reflection
+can change the verdict.
+
 Evidence-view gaming in agentic equation discovery. The project name and emblem
 do not change the manuscript title or the scope of the archived evidence.
 
 [Reproduce](#one-command-reproduction) · [Artifacts](docs/artifact_links.md) ·
 [Workshop film](docs/video.md) · [Emblem and assets](assets/branding/README.md)
+
+Hugging Face: [Development benchmark](https://huggingface.co/datasets/oroikono/EvidenceViewBench-Dev) ·
+[Extension archive](https://huggingface.co/datasets/oroikono/VerifierExtension-Results).
+Both are private; see [artifact scope and pinned revisions](docs/artifact_links.md).
 
 Accepted at [Sim2Science: ML with Imperfect Scientific Models](https://www.sim2science.com/),
 a **NeurIPS 2026 workshop** (not the main conference track).
@@ -31,18 +45,6 @@ Animation-led explanation of the corrected workshop paper, with optional
 captions. **Narration replacement pending; not approved for upload.**
 The generated voice will be replaced by the author's own recording.
 The preview opens [film notes](docs/video.md), not a published video.
-
-## About the name
-
-**Kagamaya** — spelled **K-A-G-A-M-A-Y-A**. Suggested English pronunciation:
-**kah-gah-MAH-yah** (four syllables).
-
-The name is a coined blend inspired by Japanese
-[*kagami* (鏡), “mirror”](https://www.kanjipedia.jp/kotoba/0001550900), and Sanskrit
-[*māyā*, associated with appearance and illusion](https://www.encyclopedia.com/philosophy-and-religion/eastern-religions/hinduism/maya-magic).
-Our poetic reading is **“mirror of appearances”**—not a literal translation or
-an established Japanese/Sanskrit term. It evokes the paper's question: the
-trajectory stays the same, but the numerical view can change the verdict.
 
 ## One-command reproduction
 
@@ -103,6 +105,8 @@ and final citation review remain required before any public release. No credenti
 
 The related [EvidenceViewBench-Dev dataset](https://huggingface.co/datasets/oroikono/EvidenceViewBench-Dev)
 is private development material, not a full replay of the newer manuscript.
+The separate [VerifierExtension-Results archive](https://huggingface.co/datasets/oroikono/VerifierExtension-Results)
+is private and currently contains a planning baseline, not completed new results.
 See [artifact links and scope](docs/artifact_links.md) for pinned revisions and
 the separate extension archive. This repository retains its historical v19
 scope; the newer paper's positive PDEBench confirmation is not reproduced here.

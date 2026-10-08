@@ -36,6 +36,21 @@ class BrandingTests(unittest.TestCase):
     def test_readme_references_the_bundled_header(self):
         self.assertIn('assets/branding/kagamaya-perspective.png', (ROOT / 'README.md').read_text())
 
+    def test_name_spelling_and_meaning_are_in_opening(self):
+        opening = (ROOT / 'README.md').read_text().split('[Reproduce]', 1)[0]
+        for phrase in ('K-A-G-A-M-A-Y-A', 'kah-gah-MAH-yah', 'kagami', 'māyā',
+                       'mirror of appearances', 'not a literal translation'):
+            with self.subTest(phrase=phrase):
+                self.assertIn(phrase, opening)
+
+    def test_hugging_face_links_are_prominent_and_scoped(self):
+        readme = (ROOT / 'README.md').read_text()
+        opening = readme.split('Accepted at', 1)[0]
+        for repo in ('EvidenceViewBench-Dev', 'VerifierExtension-Results'):
+            self.assertIn('https://huggingface.co/datasets/oroikono/' + repo, opening)
+        self.assertIn('Both are private', opening)
+        self.assertIn('not completed new results', readme)
+
     def test_readme_quick_links_resolve(self):
         readme = (ROOT / 'README.md').read_text()
         self.assertIn('[Reproduce](#one-command-reproduction)', readme)
