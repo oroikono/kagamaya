@@ -15,6 +15,8 @@ python3 scripts/reproduce_findings.py
 
 Expected result: `33/33` checks pass. The machine-readable output is written to
 `output/reproduction/code_crosscheck.json`. This command makes no network or model-provider calls.
+Failed or inconsistent check reports now return a nonzero exit status, so shell
+scripts cannot mistake a failed recount for success.
 
 Verify the immutable release inventory with:
 
@@ -25,7 +27,7 @@ python3 scripts/verify_manifest.py
 Run the release smoke test with:
 
 ```bash
-python3 -m unittest tests.test_reproduction
+python3 -m unittest discover -s tests -v
 ```
 
 ## What is reproduced
@@ -60,3 +62,10 @@ claims.
 This repository is private. Provider-output redistribution, dataset licensing, authorship approval,
 and final citation review remain required before any public release. No credentials are stored here.
 
+## Hugging Face links
+
+The related [EvidenceViewBench-Dev dataset](https://huggingface.co/datasets/oroikono/EvidenceViewBench-Dev)
+is private development material, not a full replay of the newer manuscript.
+See [artifact links and scope](docs/artifact_links.md) for pinned revisions and
+the separate extension archive. This repository retains its historical v19
+scope; the newer paper's positive PDEBench confirmation is not reproduced here.

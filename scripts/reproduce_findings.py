@@ -89,6 +89,23 @@ def check(name, observed, expected, evidence_level, inputs, tolerance=0.0, note=
     }
 
 
+def report_exit_code(report):
+    """Fail closed if any check failed or the report counters are inconsistent."""
+    checks = report.get("checks")
+    if not isinstance(checks, list) or not checks:
+        return 1
+    if any(not isinstance(row, dict) or row.get("passed") is not True for row in checks):
+        return 1
+    return 0 if (
+        report.get("status") == "PASS"
+        and type(report.get("checks_total")) is int
+        and type(report.get("checks_passed")) is int
+        and type(report.get("checks_failed")) is int
+        and report["checks_total"] == report["checks_passed"] == len(checks)
+        and report["checks_failed"] == 0
+    ) else 1
+
+
 def status_name(status):
     return "OUTSIDE_LIBRARY" if status == "OUT_OF_GRAMMAR" else status
 
@@ -384,7 +401,8 @@ def main():
     out=OUT/"code_crosscheck.json"
     out.write_text(json.dumps(report,indent=2,sort_keys=True)+"\n")
     print(json.dumps({"status":report["status"],"checks":len(results),"failed":[r["name"] for r in failed],"output":str(out)},indent=2))
+    return report_exit_code(report)
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())
