@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/branding/kagamaya-lockup.png" width="720" alt="Kagamaya: a mirror with an intact wave and an interrupted reflection. Evidence-view gaming." />
+  <img src="assets/branding/kagamaya-perspective.png" width="360" alt="Kagamaya: an intact charcoal wave before a minimal glass mirror; its vermilion reflection has a missing segment." />
 </p>
 
 # Kagamaya

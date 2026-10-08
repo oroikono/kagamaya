@@ -25,7 +25,8 @@ class BrandingTests(unittest.TestCase):
 
     def test_png_exports_have_expected_size(self):
         for filename, dimensions in (('kagamaya-mark.png', (512, 512)),
-                                     ('kagamaya-lockup.png', (1560, 420))):
+                                     ('kagamaya-lockup.png', (1560, 420)),
+                                     ('kagamaya-perspective.png', (1254, 1254))):
             with self.subTest(filename=filename):
                 data = (BRANDING / filename).read_bytes()
                 self.assertEqual(data[:8], b'\x89PNG\r\n\x1a\n')
@@ -33,7 +34,7 @@ class BrandingTests(unittest.TestCase):
                 self.assertEqual(struct.unpack('>II', data[16:24]), dimensions)
 
     def test_readme_references_the_bundled_header(self):
-        self.assertIn('assets/branding/kagamaya-lockup.png', (ROOT / 'README.md').read_text())
+        self.assertIn('assets/branding/kagamaya-perspective.png', (ROOT / 'README.md').read_text())
 
 
 if __name__ == '__main__':
