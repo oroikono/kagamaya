@@ -14,6 +14,14 @@ This repository contains the exact v19 manuscript source, the executable experim
 the paper, the raw machine-readable evidence needed for the primary results, and a standard-library
 reproduction script that independently recomputes the load-bearing findings.
 
+## Workshop film
+
+[![Kagamaya workshop film: Same data. Wrong equation.](assets/video/workshop-film-thumbnail.png)](docs/video.md)
+
+Animation-led explanation of the corrected workshop paper, with author-voice
+narration and optional captions. **Local review draft; YouTube upload pending.**
+The preview opens [film notes](docs/video.md), not a published video.
+
 ## About the name
 
 **Kagamaya** — spelled **K-A-G-A-M-A-Y-A**. Suggested English pronunciation:
