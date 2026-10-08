@@ -1,4 +1,5 @@
 from pathlib import Path
+from html.parser import HTMLParser
 import struct
 import unittest
 import xml.etree.ElementTree as ET
@@ -10,6 +11,48 @@ SVG = '{http://www.w3.org/2000/svg}'
 
 
 class BrandingTests(unittest.TestCase):
+    def test_platform_icons_are_accessible_and_self_contained(self):
+        for filename in ('huggingface.svg', 'youtube.svg'):
+            with self.subTest(filename=filename):
+                root = ET.parse(ROOT / 'assets/platforms' / filename).getroot()
+                self.assertEqual(root.tag, SVG + 'svg')
+                self.assertEqual(root.get('role'), 'img')
+                self.assertTrue(root.find(SVG + 'title').text)
+                self.assertEqual(root.get('viewBox'), '0 0 24 24')
+                self.assertFalse(any(node.tag in {SVG + 'script', SVG + 'foreignObject', SVG + 'image'}
+                                     for node in root.iter()))
+                self.assertFalse(any(key.rsplit('}', 1)[-1].startswith('on') or key.rsplit('}', 1)[-1] == 'href'
+                                     for node in root.iter() for key in node.attrib))
+
+    def test_platform_icons_link_to_actual_destinations(self):
+        class Links(HTMLParser):
+            def __init__(self):
+                super().__init__()
+                self.current = None
+                self.icons = []
+
+            def handle_starttag(self, tag, attrs):
+                attrs = dict(attrs)
+                if tag == 'a':
+                    self.current = attrs.get('href')
+                if tag == 'img' and attrs.get('src', '').startswith('assets/platforms/'):
+                    self.icons.append((self.current, attrs['src'], attrs.get('alt')))
+
+            def handle_endtag(self, tag):
+                if tag == 'a':
+                    self.current = None
+
+        opening = (ROOT / 'README.md').read_text().split('Accepted at', 1)[0]
+        parser = Links()
+        parser.feed(opening)
+        self.assertEqual(parser.icons, [
+            ('https://huggingface.co/datasets/oroikono/EvidenceViewBench-Dev', 'assets/platforms/huggingface.svg', 'Hugging Face'),
+            ('https://huggingface.co/datasets/oroikono/VerifierExtension-Results', 'assets/platforms/huggingface.svg', 'Hugging Face'),
+            ('docs/video.md', 'assets/platforms/youtube.svg', 'YouTube'),
+        ])
+        self.assertIn('YouTube — coming soon', opening)
+        self.assertNotIn('youtube.com/watch', opening)
+
     def test_vectors_are_accessible_and_self_contained(self):
         for filename in ('kagamaya-mark.svg', 'kagamaya-lockup.svg'):
             with self.subTest(filename=filename):
