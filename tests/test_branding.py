@@ -43,6 +43,14 @@ class BrandingTests(unittest.TestCase):
             with self.subTest(phrase=phrase):
                 self.assertIn(phrase, opening)
 
+    def test_hugging_face_links_are_prominent_and_scoped(self):
+        readme = (ROOT / 'README.md').read_text()
+        opening = readme.split('Accepted at', 1)[0]
+        for repo in ('EvidenceViewBench-Dev', 'VerifierExtension-Results'):
+            self.assertIn('https://huggingface.co/datasets/oroikono/' + repo, opening)
+        self.assertIn('Both are private', opening)
+        self.assertIn('not completed new results', readme)
+
     def test_readme_quick_links_resolve(self):
         readme = (ROOT / 'README.md').read_text()
         self.assertIn('[Reproduce](#one-command-reproduction)', readme)

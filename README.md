@@ -20,6 +20,10 @@ do not change the manuscript title or the scope of the archived evidence.
 [Reproduce](#one-command-reproduction) · [Artifacts](docs/artifact_links.md) ·
 [Workshop film](docs/video.md) · [Emblem and assets](assets/branding/README.md)
 
+Hugging Face: [Development benchmark](https://huggingface.co/datasets/oroikono/EvidenceViewBench-Dev) ·
+[Extension archive](https://huggingface.co/datasets/oroikono/VerifierExtension-Results).
+Both are private; see [artifact scope and pinned revisions](docs/artifact_links.md).
+
 Accepted at [Sim2Science: ML with Imperfect Scientific Models](https://www.sim2science.com/),
 a **NeurIPS 2026 workshop** (not the main conference track).
 
@@ -101,6 +105,8 @@ and final citation review remain required before any public release. No credenti
 
 The related [EvidenceViewBench-Dev dataset](https://huggingface.co/datasets/oroikono/EvidenceViewBench-Dev)
 is private development material, not a full replay of the newer manuscript.
+The separate [VerifierExtension-Results archive](https://huggingface.co/datasets/oroikono/VerifierExtension-Results)
+is private and currently contains a planning baseline, not completed new results.
 See [artifact links and scope](docs/artifact_links.md) for pinned revisions and
 the separate extension archive. This repository retains its historical v19
 scope; the newer paper's positive PDEBench confirmation is not reproduced here.
