@@ -19,6 +19,17 @@ class VideoPreviewTests(unittest.TestCase):
         self.assertIn('No YouTube URL', notes)
         self.assertNotIn('<iframe', readme)
 
+    def test_real_recording_is_pending_not_claimed_complete(self):
+        notes = (ROOT / 'docs/video.md').read_text()
+        self.assertIn('not approved for upload', notes)
+        self.assertIn('has not yet been received', notes)
+        self.assertIn('(recording.md)', notes)
+        self.assertIn('has not yet been rendered', notes)
+        guide = (ROOT / 'docs/recording.md').read_text()
+        self.assertIn('No recording has been received', guide)
+        self.assertIn('separate approval', guide)
+        self.assertIn('without background music', guide)
+
 
 if __name__ == '__main__':
     unittest.main()

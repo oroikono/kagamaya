@@ -18,8 +18,9 @@ reproduction script that independently recomputes the load-bearing findings.
 
 [![Kagamaya workshop film: Same data. Wrong equation.](assets/video/workshop-film-thumbnail.png)](docs/video.md)
 
-Animation-led explanation of the corrected workshop paper, with author-voice
-narration and optional captions. **Local review draft; YouTube upload pending.**
+Animation-led explanation of the corrected workshop paper, with optional
+captions. **Narration replacement pending; not approved for upload.**
+The generated voice will be replaced by the author's own recording.
 The preview opens [film notes](docs/video.md), not a published video.
 
 ## About the name
