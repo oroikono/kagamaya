@@ -36,6 +36,15 @@ class BrandingTests(unittest.TestCase):
     def test_readme_references_the_bundled_header(self):
         self.assertIn('assets/branding/kagamaya-perspective.png', (ROOT / 'README.md').read_text())
 
+    def test_readme_quick_links_resolve(self):
+        readme = (ROOT / 'README.md').read_text()
+        self.assertIn('[Reproduce](#one-command-reproduction)', readme)
+        self.assertIn('## One-command reproduction', readme)
+        for relative in ('docs/artifact_links.md', 'docs/video.md', 'assets/branding/README.md'):
+            with self.subTest(relative=relative):
+                self.assertIn('](' + relative + ')', readme)
+                self.assertTrue((ROOT / relative).is_file())
+
     def test_current_repository_links_use_project_name(self):
         for relative in ('STATUS.md', 'docs/artifact_links.md'):
             with self.subTest(relative=relative):

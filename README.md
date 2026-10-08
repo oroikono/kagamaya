@@ -7,6 +7,9 @@
 Evidence-view gaming in agentic equation discovery. The project name and emblem
 do not change the manuscript title or the scope of the archived evidence.
 
+[Reproduce](#one-command-reproduction) · [Artifacts](docs/artifact_links.md) ·
+[Workshop film](docs/video.md) · [Emblem and assets](assets/branding/README.md)
+
 Private, hash-bound release repository for the NeurIPS 2026 Sim2Science workshop manuscript:
 **“The Verifier Is Part of the Simulator: Evidence-View Gaming in Agentic Equation Discovery.”**
 
