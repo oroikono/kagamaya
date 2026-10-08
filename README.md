@@ -25,7 +25,7 @@ Hugging Face: [Development benchmark](https://huggingface.co/datasets/oroikono/E
 Both are private; see [artifact scope and pinned revisions](docs/artifact_links.md).
 
 Accepted at [Sim2Science: ML with Imperfect Scientific Models](https://www.sim2science.com/),
-a **NeurIPS 2026 workshop** (not the main conference track).
+a **NeurIPS 2026 workshop**.
 
 Private, hash-bound release repository for the workshop paper:
 **“The Verifier Is Part of the Simulator: Evidence-View Gaming in Agentic Equation Discovery.”**
