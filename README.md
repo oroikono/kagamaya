@@ -4,6 +4,17 @@
 
 # Kagamaya
 
+<p>
+  <a href="https://huggingface.co/datasets/oroikono/EvidenceViewBench-Dev"><img src="assets/platforms/huggingface.svg" width="22" height="22" alt="Hugging Face" /> Development benchmark</a>
+  &nbsp; · &nbsp;
+  <a href="https://huggingface.co/datasets/oroikono/VerifierExtension-Results"><img src="assets/platforms/huggingface.svg" width="22" height="22" alt="Hugging Face" /> Extension archive</a>
+  &nbsp; · &nbsp;
+  <a href="docs/video.md"><img src="assets/platforms/youtube.svg" width="26" height="22" alt="YouTube" /> YouTube — coming soon</a>
+</p>
+
+Both are private Hugging Face datasets; see [artifact scope and pinned revisions](docs/artifact_links.md).
+The YouTube entry opens the film notes until an upload is available.
+
 **K-A-G-A-M-A-Y-A** · pronounced **kah-gah-MAH-yah** (four syllables).
 
 A coined name inspired by Japanese
@@ -19,10 +30,6 @@ do not change the manuscript title or the scope of the archived evidence.
 
 [Reproduce](#one-command-reproduction) · [Artifacts](docs/artifact_links.md) ·
 [Workshop film](docs/video.md) · [Emblem and assets](assets/branding/README.md)
-
-Hugging Face: [Development benchmark](https://huggingface.co/datasets/oroikono/EvidenceViewBench-Dev) ·
-[Extension archive](https://huggingface.co/datasets/oroikono/VerifierExtension-Results).
-Both are private; see [artifact scope and pinned revisions](docs/artifact_links.md).
 
 Accepted at [Sim2Science: ML with Imperfect Scientific Models](https://www.sim2science.com/),
 a **NeurIPS 2026 workshop**.
