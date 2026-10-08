@@ -14,6 +14,18 @@ This repository contains the exact v19 manuscript source, the executable experim
 the paper, the raw machine-readable evidence needed for the primary results, and a standard-library
 reproduction script that independently recomputes the load-bearing findings.
 
+## About the name
+
+**Kagamaya** — spelled **K-A-G-A-M-A-Y-A**. Suggested English pronunciation:
+**kah-gah-MAH-yah** (four syllables).
+
+The name is a coined blend inspired by Japanese
+[*kagami* (鏡), “mirror”](https://www.kanjipedia.jp/kotoba/0001550900), and Sanskrit
+[*māyā*, associated with appearance and illusion](https://www.encyclopedia.com/philosophy-and-religion/eastern-religions/hinduism/maya-magic).
+Our poetic reading is **“mirror of appearances”**—not a literal translation or
+an established Japanese/Sanskrit term. It evokes the paper's question: the
+trajectory stays the same, but the numerical view can change the verdict.
+
 ## One-command reproduction
 
 ```bash
