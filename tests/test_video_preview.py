@@ -17,6 +17,8 @@ class VideoPreviewTests(unittest.TestCase):
         notes = (ROOT / 'docs/video.md').read_text()
         self.assertIn('listening review', notes)
         self.assertIn('No YouTube URL', notes)
+        self.assertIn('thumbnail opens these production notes', notes)
+        self.assertNotIn('pretending to play a video', notes)
         self.assertNotIn('<iframe', readme)
 
     def test_real_recording_is_pending_not_claimed_complete(self):

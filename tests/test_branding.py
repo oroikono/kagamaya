@@ -92,12 +92,20 @@ class BrandingTests(unittest.TestCase):
         for repo in ('EvidenceViewBench-Dev', 'VerifierExtension-Results'):
             self.assertIn('https://huggingface.co/datasets/oroikono/' + repo, opening)
         self.assertIn('Both are private', opening)
-        self.assertIn('not completed new results', readme)
+        self.assertIn('completed analyses', readme)
+        self.assertIn('preserved failed', readme)
+        self.assertNotIn('not completed new results', readme)
+        notes = (ROOT / 'docs/artifact_links.md').read_text()
+        for phrase in ('completed analyses', 'preserved failed runs',
+                       '5 October integration/repair', '7 October construction',
+                       'scientific audit blocked'):
+            with self.subTest(phrase=phrase):
+                self.assertIn(phrase, notes)
 
     def test_readme_quick_links_resolve(self):
         readme = (ROOT / 'README.md').read_text()
-        self.assertIn('[Reproduce](#one-command-reproduction)', readme)
-        self.assertIn('## One-command reproduction', readme)
+        self.assertIn('[Reproduce](#quick-start)', readme)
+        self.assertIn('## Quick start', readme)
         for relative in ('docs/artifact_links.md', 'docs/video.md', 'assets/branding/README.md'):
             with self.subTest(relative=relative):
                 self.assertIn('](' + relative + ')', readme)
@@ -108,6 +116,9 @@ class BrandingTests(unittest.TestCase):
         self.assertIn('https://www.sim2science.com/', readme)
         self.assertIn('a **NeurIPS 2026 workshop**.', readme)
         self.assertIn('direct OpenReview paper link is pending verification', readme)
+        opening = readme.split('## Quick start', 1)[0]
+        self.assertIn('historical v19 paper source', opening)
+        self.assertIn('not the current camera-ready release', opening)
         notes = (ROOT / 'docs/artifact_links.md').read_text()
         self.assertIn('Workshop/Sim2Sci', notes)
         self.assertIn('neither venue link is presented as a paper PDF link', notes)
@@ -119,6 +130,27 @@ class BrandingTests(unittest.TestCase):
                 self.assertIn('https://github.com/oroikono/kagamaya', text)
                 self.assertNotIn('https://github.com/oroikono/evidence-view-gaming-sim2science', text)
         self.assertIn('release/reproduction-and-hub-links', (ROOT / 'STATUS.md').read_text())
+        self.assertIn('On 8 October 2026', (ROOT / 'STATUS.md').read_text())
+        self.assertNotIn('active cleanup branch', (ROOT / 'STATUS.md').read_text())
+
+    def test_quick_start_checks_manifest_before_recount_and_film(self):
+        readme = (ROOT / 'README.md').read_text()
+        self.assertLess(readme.index('python3 scripts/verify_manifest.py'),
+                        readme.index('python3 scripts/reproduce_findings.py'))
+        self.assertLess(readme.index('## Quick start'), readme.index('## Workshop film'))
+        for phrase in ("Python's standard library", '33/33',
+                       'output/reproduction/code_crosscheck.json',
+                       'does not rerun solvers', 'network or model-provider calls'):
+            with self.subTest(phrase=phrase):
+                self.assertIn(phrase, readme)
+
+    def test_results_are_labeled_and_privacy_claim_is_scoped(self):
+        readme = (ROOT / 'README.md').read_text()
+        self.assertIn('1,435 correct, 3 false, and 362 inconclusive', readme)
+        self.assertIn('not independent replications', readme)
+        self.assertNotIn('No credentials are stored here', readme)
+        self.assertIn('docs/privacy_review_20261012.md', readme)
+        self.assertIn('not an exhaustive guarantee', readme)
 
 
 if __name__ == '__main__':
