@@ -5,5 +5,5 @@
 3. **Submission binding** — record repository URL and commit in the manuscript/rebuttal materials. Gate: paper hash matches repository source.
 4. **Public-release review** — resolve A-001 through A-003. Gate: author and license approval.
 
-Failure mode at every stage: stop, preserve the failing witness, and do not advance the release label.
-
+At every stage, stop on failure, keep the failed check output for diagnosis,
+and do not advance the release label.

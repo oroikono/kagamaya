@@ -7,12 +7,19 @@ Standard-library only; no model or provider calls are made.
 from __future__ import annotations
 
 import collections
+import datetime
 import gzip
 import hashlib
 import json
 import math
+import os
 import pathlib
+import platform
 import statistics
+import subprocess
+import sys
+import tempfile
+import uuid
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 PAPER = ROOT / "papers/neurips_2026/sim2science_evidence_view_gaming_agent_goal_spotlight_20260826_v19"
@@ -51,13 +58,13 @@ def sha(path: pathlib.Path) -> str:
 
 
 def load_json(path: pathlib.Path):
-    assert path.suffix.lower() != ".md", f"repository Markdown forbidden: {path}"
+    require(path.suffix.lower() != ".md", f"repository Markdown forbidden: {path}")
     with path.open() as f:
         return json.load(f)
 
 
 def load_jsonl(path: pathlib.Path):
-    assert path.suffix.lower() != ".md", f"repository Markdown forbidden: {path}"
+    require(path.suffix.lower() != ".md", f"repository Markdown forbidden: {path}")
     with path.open() as f:
         return [json.loads(line) for line in f if line.strip()]
 
@@ -91,6 +98,8 @@ def check(name, observed, expected, evidence_level, inputs, tolerance=0.0, note=
 
 def report_exit_code(report):
     """Fail closed if any check failed or the report counters are inconsistent."""
+    if report.get("execution_status", "COMPLETED") != "COMPLETED":
+        return 1
     checks = report.get("checks")
     if not isinstance(checks, list) or not checks:
         return 1
@@ -106,13 +115,68 @@ def report_exit_code(report):
     ) else 1
 
 
+def require(condition, message):
+    """Input invariants remain active when Python is run with -O."""
+    if not condition:
+        raise ValueError(message)
+
+
+def utc_now():
+    return datetime.datetime.now(datetime.timezone.utc).isoformat()
+
+
+def atomic_report(path, report):
+    """Publish a complete current receipt, never a partially written JSON file."""
+    path.parent.mkdir(parents=True, exist_ok=True)
+    temporary = None
+    try:
+        with tempfile.NamedTemporaryFile(mode="w", encoding="utf-8", dir=path.parent,
+                                         prefix=".code_crosscheck-", suffix=".tmp", delete=False) as handle:
+            temporary = pathlib.Path(handle.name)
+            handle.write(json.dumps(report, indent=2, sort_keys=True) + "\n")
+            handle.flush()
+            os.fsync(handle.fileno())
+        os.replace(temporary, path)
+    finally:
+        if temporary is not None and temporary.exists():
+            temporary.unlink()
+
+
+def source_identity():
+    """Hashes identify current bytes; Git HEAD is only the checkout's base pin."""
+    manifest = ROOT / "MANIFEST.sha256"
+    identity = {
+        "recount_path": "scripts/reproduce_findings.py",
+        "recount_sha256": sha(pathlib.Path(__file__)),
+        "manifest_path": "MANIFEST.sha256",
+        "manifest_sha256": sha(manifest) if manifest.is_file() else None,
+        "manifest_verified_by_recount": False,
+        "git_head": None,
+        "git_worktree_dirty": None,
+    }
+    if (ROOT / ".git").exists():
+        try:
+            identity["git_head"] = subprocess.run(
+                ["git", "-C", str(ROOT), "rev-parse", "HEAD"], check=True,
+                capture_output=True, text=True,
+            ).stdout.strip()
+            identity["git_worktree_dirty"] = bool(subprocess.run(
+                ["git", "-C", str(ROOT), "status", "--porcelain", "--untracked-files=normal"],
+                check=True, capture_output=True, text=True,
+            ).stdout)
+        except (OSError, subprocess.CalledProcessError):
+            # An unpacked archive can still be recounted; no Git pin is invented.
+            pass
+    return identity
+
+
 def status_name(status):
     return "OUTSIDE_LIBRARY" if status == "OUT_OF_GRAMMAR" else status
 
 
 def primary_and_defense():
     files = sorted(SHARD_DIR.glob("*.json.gz"))
-    assert len(files) == 100
+    require(len(files) == 100, "primary confirmation must contain exactly 100 shards")
     policy = collections.defaultdict(lambda: collections.Counter())
     action = collections.defaultdict(lambda: collections.Counter())
     exhaustive = collections.defaultdict(collections.Counter)
@@ -151,7 +215,7 @@ def primary_and_defense():
             wrong_groups = []
             for n in (7, 13, 25):
                 g = [a for a in e["actions"] if a["nodes"] == n and a["temporal_modes"] in (2, 3, 4, 5)]
-                assert len(g) == 4
+                require(len(g) == 4, "eligible consensus group must contain exactly four modes")
                 sigs = [(status_name(a["terminal_status"]), tuple(a.get("terminal_support") or ())) for a in g]
                 if all(s[0] in {"IDENTIFIED", "OUTSIDE_LIBRARY"} for s in sigs) and len(set(sigs)) == 1:
                     st, support = sigs[0]
@@ -168,8 +232,7 @@ def primary_and_defense():
     return files, rows_total, policy, action, inlib, exhaustive, attacked
 
 
-def main():
-    OUT.mkdir(parents=True, exist_ok=True)
+def recompute_report():
     results = []
     manuscript = PATHS["manuscript"].read_text()
 
@@ -190,7 +253,7 @@ def main():
 
     # Mechanism data.
     q = load_json(PATHS["quadrature"])["rows"]
-    assert len(q) == 5760
+    require(len(q) == 5760, "quadrature input must contain exactly 5760 rows")
     q5 = [r for r in q if r["temporal_modes"] == 5]
     by_n = {}
     for n in (7, 13, 25, 49):
@@ -241,9 +304,9 @@ def main():
             vals = []
             for producer in ("spectral_etdrk4", "fd_bdf"):
                 rr = [r for r in a if r["model"] == model and r["arm"] == arm and r["producer"] == producer and r["in_library"]]
-                assert len(rr) == 180
+                require(len(rr) == 180, "agent goal arm must contain exactly 180 rows per producer")
                 vals.append(sum(r["false_promotion_owner_diagnostic"] for r in rr))
-            assert vals[0] == vals[1]
+            require(vals[0] == vals[1], "paired producer goal counts must agree")
             ladder[model][label] = vals[0]
     expected_ladder = {
         "claude-opus-4-8":{"accuracy":2,"decisiveness":13,"omission_rewarded":179,"score_following":174},
@@ -398,9 +461,56 @@ def main():
             "Repository release/push state is assessed separately from numerical correctness.",
         ],
     }
-    out=OUT/"code_crosscheck.json"
-    out.write_text(json.dumps(report,indent=2,sort_keys=True)+"\n")
-    print(json.dumps({"status":report["status"],"checks":len(results),"failed":[r["name"] for r in failed],"output":str(out)},indent=2))
+    return report
+
+
+def main():
+    out = OUT / "code_crosscheck.json"
+    attempt = {
+        "receipt_schema_version": "kagamaya.recount_attempt.v1",
+        "attempt_id": str(uuid.uuid4()),
+        "started_at": utc_now(),
+        "finished_at": None,
+        "execution_status": "RUNNING",
+        "source_identity": None,
+        "environment": {
+            "python_version": platform.python_version(),
+            "python_implementation": platform.python_implementation(),
+            "platform": platform.system(),
+            "python_optimized": bool(sys.flags.optimize),
+            "site_packages_disabled": bool(sys.flags.no_site),
+        },
+    }
+    report = {
+        "schema_version": "verisigs.doomsday_code_crosscheck.v1",
+        "status": "RUNNING", "checks": [],
+        "checks_total": 0, "checks_passed": 0, "checks_failed": 0,
+        **attempt,
+    }
+    # Invalidate any previous PASS before attempting source/input reads. An
+    # interrupted process leaves RUNNING, never the prior successful attempt.
+    atomic_report(out, report)
+    try:
+        attempt["source_identity"] = source_identity()
+        report = recompute_report()
+        attempt["execution_status"] = "COMPLETED"
+    except Exception as error:
+        report = {
+            "schema_version": "verisigs.doomsday_code_crosscheck.v1",
+            "status": "FAIL", "checks": [],
+            "checks_total": 0, "checks_passed": 0, "checks_failed": 0,
+            "execution_error": {"type": type(error).__name__, "message": str(error)},
+        }
+        # A runtime failure is not a fabricated failed scientific check. The
+        # existing counters describe only a completed registered-check report.
+        attempt["execution_status"] = "ERROR"
+    attempt["finished_at"] = utc_now()
+    report.update(attempt)
+    atomic_report(out, report)
+    print(json.dumps({"status": report["status"], "checks": report["checks_total"],
+                      "failed": [r["name"] for r in report["checks"] if not r["passed"]],
+                      "execution_status": report["execution_status"],
+                      "attempt_id": report["attempt_id"], "output": str(out)}, indent=2))
     return report_exit_code(report)
 
 

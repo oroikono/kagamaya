@@ -1,26 +1,38 @@
 # Status
 
-Current stage: **private GitHub release**.
+Current stage: **private historical v19 archive**. This is not the current
+camera-ready release; see [artifact scope](docs/artifact_links.md).
 
-| Stage | State | Witness |
+| Stage | State | Evidence |
 |---|---|---|
-| Exact v19 manuscript copied | accepted | source hash + manifest |
-| Primary raw evidence copied | accepted | 100 gzip shards; portable 33-check replay |
-| Agent/control evidence copied | accepted | row-level JSON/JSONL replay |
-| Independent code audit | accepted | schema-valid doomsday report |
-| Private GitHub push | accepted | `oroikono/kagamaya`, private, `main` |
-| Public release | blocked | A-001, A-002, A-003 |
+| Exact v19 manuscript copied | Complete | source hash + manifest |
+| Primary raw evidence copied | Complete | 100 gzip shards; portable 33-check recount |
+| Agent/control evidence copied | Complete | row-level JSON/JSONL recount |
+| Code and data audit archived | Complete | [archived audit report](output/audits/doomsday_v19_code_crosscheck_20260827/doomsday_report.json) |
+| Private GitHub push | Complete | `oroikono/kagamaya`, private, `main` |
+| Public release | Blocked | A-001, A-002, A-003 |
 
-The scientific core reproduces locally. The 50-seed sequential result remains aggregate-level because
-its raw episode shards are not present in the local closure. Later 2-D/coupled and Gray–Scott results
-remain failed-gate evidence only.
+The stored-record recount passes locally. The 50-seed sequential result remains
+aggregate-level because its raw episode shards are absent. Later 2-D/coupled and
+Gray–Scott results remain failed-gate evidence only. The newer positive PDEBench
+bundle is not included.
 
 Remote: <https://github.com/oroikono/kagamaya>. The initial scientific release
 commit is `4408df88ab22d3642d36500e02fb2c811ee0a460`; `REMOTE_RELEASE_RECEIPT.json` records the creation
-witness. Public release remains blocked and the repository must stay private until its listed blockers
+record. Public release remains blocked and the repository must stay private until its listed blockers
 are resolved.
 
 The repository was renamed to `kagamaya` on 8 October 2026 without changing
 visibility or rewriting history. The original creation receipt retains its
-historical repository name and URL. The active cleanup branch is
-`release/reproduction-and-hub-links`; historical audit provenance is unchanged.
+historical repository name and URL.
+
+On 8 October 2026, [PR #2](https://github.com/oroikono/kagamaya/pull/2) merged
+`release/reproduction-and-hub-links`, including the reproduction exit-status fix
+and documentation updates. It did not change the numerical calculations or
+archived scientific records. Historical audit provenance is unchanged.
+
+The 12 October maintenance update clarifies archive and Hub-card scope, adds
+contribution guidance, hardens path/inventory checks, and replaces stale recount
+receipts on runtime failure. The original 33 numerical checks and archived
+scientific inputs remain unchanged. The [privacy review](docs/privacy_review_20261012.md)
+records retained identifying provenance; this private archive is not anonymous.

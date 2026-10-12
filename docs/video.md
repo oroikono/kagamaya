@@ -10,7 +10,8 @@ shows objective-conditioned choices and agreement versus fixed baselines.
 Status: narration replacement pending; not approved for upload. The author
 reported unsatisfactory generated speech and an additional audible sound.
 A natural recording has been requested but has not yet been received or edited.
-No YouTube URL exists yet. The README preview links here rather than pretending to play a video.
+No YouTube URL exists yet. The thumbnail opens these production notes until the
+reviewed video is published.
 Once an approved YouTube URL is available, its thumbnail can link directly there;
 GitHub README does not use an arbitrary YouTube iframe.
 
@@ -29,8 +30,9 @@ and closing. This visual change has not yet been rendered.
 Analytic fields and the toy sampling example are labelled illustrations, not
 new benchmark results. The reported results are transcribed from the corrected
 workshop manuscript. The positive PDEBench confirmation is not reproduced by
-the historical code archive included here. The film is not a new experimental
-result, main-track readiness claim, or scientific audit.
+the historical code archive included here. The film explains existing results;
+it does not establish a new experiment, main-track readiness, or an independent
+scientific audit.
 
 Only the thumbnail and these notes are included in the repository. The large
 MP4, private voice reference, reference transcript, embeddings, and raw voice

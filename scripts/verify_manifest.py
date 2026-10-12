@@ -2,49 +2,36 @@
 """Verify every file in the release manifest without external dependencies."""
 from __future__ import annotations
 
-import hashlib
 from pathlib import Path
+
+if __package__:
+    from .manifest_common import digest, inventory, parse_manifest, regular_file
+else:
+    from manifest_common import digest, inventory, parse_manifest, regular_file
 
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / "MANIFEST.sha256"
-EXCLUDED_PARTS = {".git", "__pycache__", ".pytest_cache", "reproduction"}
-
-
-def digest(path: Path) -> str:
-    h = hashlib.sha256()
-    with path.open("rb") as handle:
-        while block := handle.read(1 << 20):
-            h.update(block)
-    return h.hexdigest()
 
 
 def main() -> None:
-    rows = [line.rstrip("\n") for line in MANIFEST.read_text().splitlines() if line.strip()]
     failures = []
-    expected_paths = set()
-    for row in rows:
-        expected, relative = row.split("  ", 1)
-        if relative in expected_paths:
-            failures.append(f"duplicate manifest entry: {relative}")
-            continue
-        expected_paths.add(relative)
-        path = ROOT / relative
-        if not path.is_file():
-            failures.append(f"missing: {relative}")
-        elif digest(path) != expected:
-            failures.append(f"hash mismatch: {relative}")
-    actual_paths = {
-        path.relative_to(ROOT).as_posix()
-        for path in ROOT.rglob("*")
-        if path.is_file()
-        and path != MANIFEST
-        and not any(part in EXCLUDED_PARTS for part in path.relative_to(ROOT).parts)
-    }
-    for relative in sorted(actual_paths - expected_paths):
-        failures.append(f"unmanifested: {relative}")
-    for relative in sorted(expected_paths - actual_paths):
-        if (ROOT / relative).is_file():
+    try:
+        manifest = regular_file(ROOT, MANIFEST.relative_to(ROOT).as_posix())
+        rows = parse_manifest(manifest.read_text(encoding="utf-8"))
+        # Validate the entire inventory and every entry before hashing any
+        # payload. Malformed rows cannot trigger reads outside the root.
+        actual = inventory(ROOT, MANIFEST.relative_to(ROOT).as_posix())
+        expected_files = {relative: regular_file(ROOT, relative) for relative in rows}
+        for relative in sorted(actual.keys() - rows.keys()):
+            failures.append(f"unmanifested: {relative}")
+        for relative in sorted(rows.keys() - actual.keys()):
             failures.append(f"excluded but manifested: {relative}")
+        if not failures:
+            for relative, path in expected_files.items():
+                if digest(path) != rows[relative]:
+                    failures.append(f"hash mismatch: {relative}")
+    except (OSError, ValueError) as error:
+        failures.append(str(error))
     if failures:
         raise SystemExit("MANIFEST_FAIL\n" + "\n".join(failures))
     print(f"MANIFEST_PASS files={len(rows)}")

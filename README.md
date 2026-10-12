@@ -15,60 +15,43 @@
 Both are private Hugging Face datasets; see [artifact scope and pinned revisions](docs/artifact_links.md).
 The YouTube entry opens the film notes until an upload is available.
 
+Kagamaya studies how changing a trajectory's numerical representation can change
+an equation-discovery verdict. This private research archive contains the
+historical v19 paper source, experiment code, stored records, and an offline
+script that recounts the paper's main reported results.
+
+Paper: **“The Verifier Is Part of the Simulator: Evidence-View Gaming in Agentic Equation Discovery.”**
+Accepted at [Sim2Science: ML with Imperfect Scientific Models](https://www.sim2science.com/),
+a **NeurIPS 2026 workshop**. This archive is not the current camera-ready release.
+The direct OpenReview paper link is pending verification; the workshop link is
+not a paper PDF link.
+
 **K-A-G-A-M-A-Y-A** · pronounced **kah-gah-MAH-yah** (four syllables).
 
 A coined name inspired by Japanese
 [*kagami* (鏡), “mirror”](https://www.kanjipedia.jp/kotoba/0001550900), and Sanskrit
 [*māyā*, associated with appearance and illusion](https://www.encyclopedia.com/philosophy-and-religion/eastern-religions/hinduism/maya-magic).
 Our poetic reading is **“mirror of appearances”**, not a literal translation
-or an established Japanese/Sanskrit word. Like the emblem, it captures the
-paper's question: the trajectory stays the same, but its numerical reflection
-can change the verdict.
+or an established Japanese/Sanskrit word. The [emblem](assets/branding/README.md)
+uses the same metaphor: an unchanged trajectory can have a misleading numerical reflection.
 
-Evidence-view gaming in agentic equation discovery. The project name and emblem
-do not change the manuscript title or the scope of the archived evidence.
-
-[Reproduce](#one-command-reproduction) · [Artifacts](docs/artifact_links.md) ·
+[Reproduce](#quick-start) · [Artifacts](docs/artifact_links.md) ·
 [Workshop film](docs/video.md) · [Emblem and assets](assets/branding/README.md)
 
-Accepted at [Sim2Science: ML with Imperfect Scientific Models](https://www.sim2science.com/),
-a **NeurIPS 2026 workshop**.
+## Quick start
 
-Private, hash-bound release repository for the workshop paper:
-**“The Verifier Is Part of the Simulator: Evidence-View Gaming in Agentic Equation Discovery.”**
-
-The direct OpenReview paper link is pending verification; the link above is to
-the workshop, not to the paper PDF.
-
-This repository contains the exact v19 manuscript source, the executable experiment code retained for
-the paper, the raw machine-readable evidence needed for the primary results, and a standard-library
-reproduction script that independently recomputes the load-bearing findings.
-
-## Workshop film
-
-[![Kagamaya workshop film: Same data. Wrong equation.](assets/video/workshop-film-thumbnail.png)](docs/video.md)
-
-Animation-led explanation of the corrected workshop paper, with optional
-captions. **Narration replacement pending; not approved for upload.**
-The generated voice will be replaced by the author's own recording.
-The preview opens [film notes](docs/video.md), not a published video.
-
-## One-command reproduction
-
-```bash
-python3 scripts/reproduce_findings.py
-```
-
-Expected result: `33/33` checks pass. The machine-readable output is written to
-`output/reproduction/code_crosscheck.json`. This command makes no network or model-provider calls.
-Failed or inconsistent check reports now return a nonzero exit status, so shell
-scripts cannot mistake a failed recount for success.
-
-Verify the immutable release inventory with:
+From the repository root, check the SHA-256 file manifest before recounting:
 
 ```bash
 python3 scripts/verify_manifest.py
+python3 scripts/reproduce_findings.py
 ```
+
+Both commands use Python's standard library. The recount uses stored records;
+it does not rerun solvers or make network or model-provider calls.
+Expected result: `33/33` checks pass, with machine-readable output at
+`output/reproduction/code_crosscheck.json`. Failed or inconsistent checks return
+a nonzero exit status.
 
 Run the release smoke test with:
 
@@ -76,15 +59,51 @@ Run the release smoke test with:
 python3 -m unittest discover -s tests -v
 ```
 
-## What is reproduced
+See the [reproducibility protocol](docs/reproducibility_protocol.md) for exact
+revision and environment recording.
 
-- the 600 → 27 → 13 → 10 temporal-refinement failure ladder;
-- 1,500/1,800 false promotions from exact public-score maximization;
-- 1,435/3/362 outcomes for the four-view agreement rule;
-- exhaustive defense-aware enumeration, including zero agreement-eligible false identifications;
-- the four-goal, three-model action ladder and trust-report/action joins;
-- the 1% high-noise paired comparison, fine/coarse residual AUROCs, Qwen control, and de-nesting transitions;
-- aggregate consistency for the sequential control and the later failed 2-D/Gray–Scott gates.
+## Results recounted
+
+- Temporal refinement: false library rejections fall from 600 → 27 → 13 → 10
+  as the sample count increases from 7 → 13 → 25 → 49 across 720 conditions.
+- Exact public-score maximization: 1,500 false promotions across 1,800 conditions per implementation.
+- Four-view agreement: 1,435 correct, 3 false, and 362 inconclusive outcomes
+  across 1,800 conditions per implementation.
+- Defense-aware enumeration: zero agreement-eligible false identifications.
+- Agent controls: the four-goal, three-model action ladder and trust-report/action joins.
+- Auxiliary controls: the 1% high-noise paired comparison, fine/coarse residual
+  AUROCs, Qwen control, and de-nesting transitions.
+- Aggregate consistency: the sequential control and later failed 2-D/Gray–Scott gates.
+
+## Evidence and release limits
+
+The primary 1,800-condition result is recounted from all 100 raw gzip shards.
+Agent and auxiliary controls use row-level JSON/JSONL. The 50-seed sequential
+result has code and a compact aggregate, but no raw episode shards here. Later
+2-D/coupled and Gray–Scott records are failed-gate evidence, not positive transfer
+results. Implementations and related views are paired, not independent replications;
+see the [sample counts](docs/data_contract.md) and [evaluation definitions](docs/evaluation_protocol.md).
+
+This historical v19 archive does not include the current camera-ready source or
+the newer paper's positive PDEBench replay bundle. Related Hugging Face archives
+contain exposed development material, completed analyses, and preserved failed
+runs, not a byte-equivalent current-paper release. Their pinned revisions,
+bundle-specific limits, and absent October bundles are listed in
+[artifact links](docs/artifact_links.md).
+
+The repository remains private. Public release requires provider-output
+redistribution review, dataset and code licensing, authorship approval, and final
+citation review; see [release blockers](docs/ambiguities.md). Do not commit
+credentials or private voice data. See the [dated privacy review](docs/privacy_review_20261012.md)
+for scan scope and findings; it is not an exhaustive guarantee.
+
+## Workshop film
+
+[![Kagamaya workshop film: Same data. Wrong equation.](assets/video/workshop-film-thumbnail.png)](docs/video.md)
+
+Animation-led explanation of the corrected workshop paper, with optional
+captions. **Narration replacement pending; not approved for upload.**
+The preview opens [production notes](docs/video.md) until the reviewed video is published.
 
 ## Layout
 
@@ -92,28 +111,8 @@ python3 -m unittest discover -s tests -v
 - `experiments/`: generation, verifier, policy, control, and validation source.
 - `evidence_view_benchmark_v1/`: frozen agent interfaces and scored machine-readable records.
 - `scripts/`: portable reproduction and manifest validation.
-- `output/audits/`: independent code/raw-data doomsday audit.
-- `docs/`: source-truth, interface, data, evaluation, and reproducibility contracts.
+- `output/audits/`: code and data audit reports.
+- `docs/`: provenance, data formats, interfaces, evaluation, and reproduction instructions.
 
-## Evidence levels
-
-The primary 1,800-condition result is recomputed from all 100 raw gzip shards. The agent and auxiliary
-controls are recomputed from row-level JSON/JSONL. The 50-seed sequential result is locally available
-as code plus a compact aggregate, not raw episode shards, and is labeled accordingly. The later
-2-D/coupled and Gray–Scott results are included only as failed-gate evidence, not as positive transfer
-claims.
-
-## Release status
-
-This repository is private. Provider-output redistribution, dataset licensing, authorship approval,
-and final citation review remain required before any public release. No credentials are stored here.
-
-## Hugging Face links
-
-The related [EvidenceViewBench-Dev dataset](https://huggingface.co/datasets/oroikono/EvidenceViewBench-Dev)
-is private development material, not a full replay of the newer manuscript.
-The separate [VerifierExtension-Results archive](https://huggingface.co/datasets/oroikono/VerifierExtension-Results)
-is private and currently contains a planning baseline, not completed new results.
-See [artifact links and scope](docs/artifact_links.md) for pinned revisions and
-the separate extension archive. This repository retains its historical v19
-scope; the newer paper's positive PDEBench confirmation is not reproduced here.
+For changes, see [contributing](CONTRIBUTING.md). Current release history is in
+[STATUS.md](STATUS.md).
