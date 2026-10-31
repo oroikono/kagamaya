@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://verisigs.local/evidence-view/choose-evidence-view-v1.schema.json",
+  "title": "choose_evidence_view arguments",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "spectral_etdrk4_action",
+    "fd_bdf_action"
+  ],
+  "properties": {
+    "spectral_etdrk4_action": {
+      "type": "string",
+      "enum": ["A00", "A01", "A02", "A03", "A04", "A05", "A06", "A07", "A08", "A09", "A10", "A11"]
+    },
+    "fd_bdf_action": {
+      "type": "string",
+      "enum": ["A00", "A01", "A02", "A03", "A04", "A05", "A06", "A07", "A08", "A09", "A10", "A11"]
+    }
+  }
+}

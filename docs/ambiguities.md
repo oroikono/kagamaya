@@ -1,5 +1,15 @@
 # Ambiguities
 
+## Update — 31 October 2026
+
+The repository is now public. The [reviewed additions](release_20261031/README.md)
+use author-approved MIT terms for newly added author-owned software and retain
+separate CC BY 4.0 attribution for derived PDEBench records. Raw sequential shards
+and primary prompt dependencies have been added. Thus A-001 and A-004 below are
+historical descriptions, superseded for this explicit addition set. The provider
+redistribution and transitive-license questions are not blanket-cleared for all
+pre-existing history. No new provider outputs were added in this release.
+
 ## A-001 — Public code license
 
 - Blocking: yes, for public release.

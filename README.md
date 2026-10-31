@@ -16,9 +16,11 @@ Both are private Hugging Face datasets; see [artifact scope and pinned revisions
 The YouTube entry opens the film notes until an upload is available.
 
 Kagamaya studies how changing a trajectory's numerical representation can change
-an equation-discovery verdict. This private research archive contains the
+an equation-discovery verdict. This public research archive contains the
 historical v19 paper source, experiment code, stored records, and an offline
-script that recounts the paper's main reported results.
+script that recounts reported results. The [camera-ready reproduction additions](docs/release_20261031/README.md)
+provide the positive PDEBench source/records, primary prompt dependencies and raw
+sequential-confirmation records, with exact scope and replay instructions.
 
 Paper: **“The Verifier Is Part of the Simulator: Evidence-View Gaming in Agentic Equation Discovery.”**
 Accepted at [Sim2Science: ML with Imperfect Scientific Models](https://www.sim2science.com/),
@@ -79,23 +81,25 @@ revision and environment recording.
 
 The primary 1,800-condition result is recounted from all 100 raw gzip shards.
 Agent and auxiliary controls use row-level JSON/JSONL. The 50-seed sequential
-result has code and a compact aggregate, but no raw episode shards here. Later
+result now includes its raw episode shards in the 31 October additions. Later
 2-D/coupled and Gray–Scott records are failed-gate evidence, not positive transfer
 results. Implementations and related views are paired, not independent replications;
 see the [sample counts](docs/data_contract.md) and [evaluation definitions](docs/evaluation_protocol.md).
 
-This historical v19 archive does not include the current camera-ready source or
-the newer paper's positive PDEBench replay bundle. Related Hugging Face archives
+The historical v19 manuscript is not the current camera-ready source. The
+31 October additions include the positive PDEBench replay bundle. Related Hugging Face archives
 contain exposed development material, completed analyses, and preserved failed
 runs, not a byte-equivalent current-paper release. Their pinned revisions,
 bundle-specific limits, and absent October bundles are listed in
 [artifact links](docs/artifact_links.md).
 
-The repository remains private. Public release requires provider-output
-redistribution review, dataset and code licensing, authorship approval, and final
-citation review; see [release blockers](docs/ambiguities.md). Do not commit
-credentials or private voice data. See the [dated privacy review](docs/privacy_review_20261012.md)
-for scan scope and findings; it is not an exhaustive guarantee.
+The repository is public. The [31 October release notice](docs/release_20261031/README.md)
+records the author-approved MIT scope and separate dataset attribution for the
+new additions. Earlier [release questions](docs/ambiguities.md) and the
+[dated privacy review](docs/privacy_review_20261012.md) remain historical records,
+not evidence that this repository is currently private. No new redistribution
+license for provider outputs or blanket clearance of existing history is asserted.
+The privacy review is not an exhaustive guarantee.
 
 ## Workshop film
 

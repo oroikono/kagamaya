@@ -1,0 +1,36 @@
+{
+  "schema": "kagamaya-camera-ready-release-validation.v1",
+  "date": "2026-10-31",
+  "primary_stored_recount": {"status": "PASS", "checks": 33},
+  "repository_unit_tests": {"status": "PASS", "tests": 40},
+  "pdebench_source_freeze": {"status": "PASS", "files": 32},
+  "pdebench_stored_policy_replay": {
+    "status": "PASS",
+    "episodes": 900,
+    "selectable_views": 10800,
+    "policy_decisions": 2700,
+    "output_sha256": "fae23fad88671febec97f2141c9607e0353039dc219d439a47b1ab3c0ce08f19",
+    "matches_original_bytes": true,
+    "python": "3.9.6",
+    "numpy": "2.0.2"
+  },
+  "pdebench_synthetic_tests": {
+    "status": "COMPLETED_WITH_SKIP",
+    "passed": 14,
+    "skipped": 1,
+    "skip_reason": "h5py unavailable in the local release-check runtime"
+  },
+  "sequential_semantic_integrity": {
+    "status": "PASS", "shards": 100,
+    "owner_digests": 3600, "proposal_digests": 25200, "score_digests": 25200
+  },
+  "sequential_original_validator_attempt_1": {
+    "status": "BLOCKED_MISSING_TRANSITIVE_SOURCE",
+    "missing_module": "experiments.agentic_frontier.wp1_wp4_operator_agent.unified_agent_v2_1_scaled",
+    "pde_solve_executed": false
+  },
+  "fresh_numerical_regeneration": "NOT_RUN",
+  "model_provider_calls": 0,
+  "docker_image": "NOT_PROVIDED",
+  "withheld_primary_authorization": "private provenance reference; original hashes preserved, not re-created"
+}

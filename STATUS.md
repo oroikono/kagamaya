@@ -1,5 +1,14 @@
 # Status
 
+## 31 October 2026 — camera-ready reproduction additions
+
+The public release adds the frozen positive PDEBench v5 source, 60 completed
+result shards, literal primary prompt dependencies/inventory, the completed truth
+sidecar and 100 sequential-confirmation shards. See
+[release scope and commands](docs/release_20261031/README.md). The original
+manuscript remains historical v19; no current camera-ready PDF is substituted.
+This addition does not rerun numerical producers or model providers.
+
 Current stage: **private historical v19 archive**. This is not the current
 camera-ready release; see [artifact scope](docs/artifact_links.md).
 
