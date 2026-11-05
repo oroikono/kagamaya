@@ -5,6 +5,8 @@
 # Kagamaya
 
 <p>
+  <a href="https://arxiv.org/abs/2611.01334"><img src="https://img.shields.io/badge/arXiv-2611.01334-b31b1b.svg" height="22" alt="arXiv: 2611.01334" /></a>
+  &nbsp; · &nbsp;
   <a href="https://huggingface.co/datasets/oroikono/EvidenceViewBench-Dev"><img src="assets/platforms/huggingface.svg" width="22" height="22" alt="Hugging Face" /> Development benchmark</a>
   &nbsp; · &nbsp;
   <a href="https://huggingface.co/datasets/oroikono/VerifierExtension-Results"><img src="assets/platforms/huggingface.svg" width="22" height="22" alt="Hugging Face" /> Extension archive</a>
