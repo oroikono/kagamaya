@@ -22,7 +22,7 @@ script that recounts reported results. The [camera-ready reproduction additions]
 provide the positive PDEBench source/records, primary prompt dependencies and raw
 sequential-confirmation records, with exact scope and replay instructions.
 
-Paper: **“The Verifier Is Part of the Simulator: Evidence-View Gaming in Agentic Equation Discovery.”**
+Paper: **[The Verifier Is Part of the Simulator: Evidence-View Gaming in Agentic Equation Discovery](https://arxiv.org/abs/2611.01334)** · [PDF](https://arxiv.org/pdf/2611.01334) · [BibTeX](CITATION.bib)
 Accepted at [Sim2Science: ML with Imperfect Scientific Models](https://www.sim2science.com/),
 a **NeurIPS 2026 workshop**. This archive is not the current camera-ready release.
 The direct OpenReview paper link is pending verification; the workshop link is
