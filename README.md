@@ -7,6 +7,8 @@
 <p>
   <a href="https://arxiv.org/abs/2611.01334"><img src="https://img.shields.io/badge/arXiv-2611.01334-b31b1b.svg" height="22" alt="arXiv: 2611.01334" /></a>
   &nbsp; · &nbsp;
+  <a href="https://huggingface.co/datasets/oroikono/Kagamaya-PDEBench"><img src="assets/platforms/huggingface.svg" width="22" height="22" alt="Hugging Face" /> Public PDEBench data</a>
+  &nbsp; · &nbsp;
   <a href="https://huggingface.co/datasets/oroikono/EvidenceViewBench-Dev"><img src="assets/platforms/huggingface.svg" width="22" height="22" alt="Hugging Face" /> Development benchmark</a>
   &nbsp; · &nbsp;
   <a href="https://huggingface.co/datasets/oroikono/VerifierExtension-Results"><img src="assets/platforms/huggingface.svg" width="22" height="22" alt="Hugging Face" /> Extension archive</a>
@@ -14,7 +16,10 @@
   <a href="docs/video.md"><img src="assets/platforms/youtube.svg" width="26" height="22" alt="YouTube" /> YouTube — coming soon</a>
 </p>
 
-Both are private Hugging Face datasets; see [artifact scope and pinned revisions](docs/artifact_links.md).
+The public [PDEBench dataset](https://huggingface.co/datasets/oroikono/Kagamaya-PDEBench/tree/v1.0.1)
+provides three linked tables, a tested loading example and an offline stored-policy replay.
+It covers the paper's PDEBench v5 subset, not the entire benchmark.
+The development benchmark and extension archive remain private; see [artifact scope and pinned revisions](docs/artifact_links.md).
 The YouTube entry opens the film notes until an upload is available.
 
 Kagamaya studies how changing a trajectory's numerical representation can change
