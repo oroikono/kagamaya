@@ -7,19 +7,18 @@
 <p>
   <a href="https://arxiv.org/abs/2611.01334"><img src="https://img.shields.io/badge/arXiv-2611.01334-b31b1b.svg" height="22" alt="arXiv: 2611.01334" /></a>
   &nbsp; · &nbsp;
-  <a href="https://huggingface.co/datasets/oroikono/Kagamaya-PDEBench"><img src="assets/platforms/huggingface.svg" width="22" height="22" alt="Hugging Face" /> Public PDEBench data</a>
-  &nbsp; · &nbsp;
-  <a href="https://huggingface.co/datasets/oroikono/EvidenceViewBench-Dev"><img src="assets/platforms/huggingface.svg" width="22" height="22" alt="Hugging Face" /> Development benchmark</a>
-  &nbsp; · &nbsp;
-  <a href="https://huggingface.co/datasets/oroikono/VerifierExtension-Results"><img src="assets/platforms/huggingface.svg" width="22" height="22" alt="Hugging Face" /> Extension archive</a>
+  <a href="https://huggingface.co/datasets/oroikono/Kagamaya-Numerical"><img src="assets/platforms/huggingface.svg" width="22" height="22" alt="Hugging Face" /> Public numerical benchmark</a>
   &nbsp; · &nbsp;
   <a href="docs/video.md"><img src="assets/platforms/youtube.svg" width="26" height="22" alt="YouTube" /> YouTube — coming soon</a>
 </p>
 
-The public [PDEBench dataset](https://huggingface.co/datasets/oroikono/Kagamaya-PDEBench/tree/v1.0.1)
-provides three linked tables, a tested loading example and an offline stored-policy replay.
-It covers the paper's PDEBench v5 subset, not the entire benchmark.
-The development benchmark and extension archive remain private; see [artifact scope and pinned revisions](docs/artifact_links.md).
+The public [numerical reproduction package](https://huggingface.co/datasets/oroikono/Kagamaya-Numerical/tree/v1.0.0)
+includes the primary 1-D benchmark, temporal refinement, recovered score-retuning
+and PySINDy outputs, and PDEBench tables, with tested loading and offline recount commands.
+Numerical records are CC BY 4.0; author-owned code included in that release is MIT.
+The [PDEBench-only package](https://huggingface.co/datasets/oroikono/Kagamaya-PDEBench)
+remains available separately. Historical development archives remain private;
+see [artifact scope and pinned revisions](docs/artifact_links.md).
 The YouTube entry opens the film notes until an upload is available.
 
 Kagamaya studies how changing a trajectory's numerical representation can change

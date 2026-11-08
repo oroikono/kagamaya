@@ -1,9 +1,20 @@
 # GitHub and Hugging Face artifacts
 
-Archive scope reviewed on 12 October 2026. The revisions below are observed
-snapshots, not interchangeable code and dataset commits. Private access is
-required; these links do not authorize redistribution or imply that development
-artifacts reproduce the latest manuscript.
+## Public numerical reproduction
+
+The [Kagamaya numerical package](https://huggingface.co/datasets/oroikono/Kagamaya-Numerical/tree/v1.0.0)
+provides the primary 1-D benchmark, temporal refinement, recovered original
+score-retuning and PySINDy outputs, and the PDEBench comparison. Its card has
+tested download, table-loading and stored-record reproduction commands.
+Records are CC BY 4.0 and author-owned code included in that package is MIT;
+these terms do not relicense unrelated repository assets or provider responses.
+
+The [PDEBench-only dataset](https://huggingface.co/datasets/oroikono/Kagamaya-PDEBench)
+also remains public. Neither private archive below is needed for these downloads.
+
+The historical archive scope below was reviewed on 12 October 2026. Its pinned
+snapshots are distinct from the public numerical release and require private
+access. They do not imply that development artifacts reproduce the latest manuscript.
 
 ## Paper source and historical reproduction
 
@@ -14,7 +25,7 @@ is linked from the workshop's call for papers. A direct paper/forum URL has not
 yet been verified; neither venue link is presented as a paper PDF link.
 
 [GitHub paper repository](https://github.com/oroikono/kagamaya)
-is private. Its historical default-branch release contains the v19 manuscript
+is public. Its historical source release contains the v19 manuscript
 and a 33-check stored-record recount. It is not the current camera-ready source.
 On 8 October 2026, [PR #2](https://github.com/oroikono/kagamaya/pull/2) merged
 the reproduction exit-status fix and documentation updates. It did not change
